@@ -1,0 +1,684 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#6C47FF"><title>Applingo · Learn English, Level Up</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F3F2FB;--card:rgba(255,255,255,.78);--ink:#14122B;--muted:#5E5B7A;--line:rgba(80,70,160,.16);--a:#6C47FF;--b:#00B8C4;--ok:#12805A;--bad:#C2410C;
+--display:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;--body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A0918;--card:rgba(24,21,52,.72);--ink:#F1EFFF;--muted:#A8A4CC;--line:rgba(160,150,255,.18);--a:#8F74FF;--b:#2DD4E0;--ok:#4ADE9B;--bad:#FB9A5C;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0A0918;--card:rgba(24,21,52,.72);--ink:#F1EFFF;--muted:#A8A4CC;--line:rgba(160,150,255,.18);--a:#8F74FF;--b:#2DD4E0;--ok:#4ADE9B;--bad:#FB9A5C;color-scheme:dark}
+html{height:100%}*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--body);padding:max(18px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 80px max(16px,env(safe-area-inset-left,0px));overflow-x:hidden}
+.aur{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.aur i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:fl 18s ease-in-out infinite alternate}
+.aur i:nth-child(1){width:46vw;height:46vw;background:var(--a);left:-10vw;top:-12vw}
+.aur i:nth-child(2){width:40vw;height:40vw;background:var(--b);right:-8vw;top:10vh;animation-delay:-6s}
+.aur i:nth-child(3){width:34vw;height:34vw;background:#FF5CAA;left:30vw;bottom:-16vw;opacity:.32;animation-delay:-11s}
+@keyframes fl{to{transform:translate(6vw,5vh) scale(1.15)}}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font:800 1.3rem/1 var(--display);letter-spacing:-.02em;display:flex;align-items:center;gap:10px;cursor:pointer;background:none;border:0;padding:0;min-height:44px;color:var(--ink)}
+.logo{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;color:#fff;font-size:1rem;box-shadow:0 6px 20px -6px var(--a)}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.1;letter-spacing:-.025em;text-wrap:balance}
+h1{font-size:clamp(2.2rem,7vw,3.8rem);font-weight:800}h2{font-size:1.5rem;font-weight:800}h3{font-size:1.05rem;font-weight:800}
+.grad{background:linear-gradient(100deg,var(--a),var(--b) 60%,#FF5CAA);-webkit-background-clip:text;background-clip:text;color:transparent}
+p{margin:0;max-width:66ch}.muted{color:var(--muted)}.sm{font-size:.9rem}.ok{color:var(--ok)}.bad{color:var(--bad)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 20px 50px -28px rgba(60,40,160,.45);display:flex;flex-direction:column;gap:16px;animation:in .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes in{from{opacity:0;transform:translateY(12px)}}
+button{font:600 .98rem/1 var(--body);min-height:46px;padding:12px 18px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:transform .15s,box-shadow .2s}
+button:hover:not(:disabled){transform:translateY(-2px)}button:disabled{opacity:.4;cursor:not-allowed}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--b);outline-offset:2px}
+.pri{background:linear-gradient(120deg,var(--a),var(--b));color:#fff;border:0;box-shadow:0 12px 28px -10px var(--a)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.nav{display:flex;gap:6px;flex-wrap:wrap}.nav button{min-height:40px;padding:9px 14px;font-size:.9rem;border-radius:12px}
+.nav button.on{background:linear-gradient(120deg,var(--a),var(--b));color:#fff;border:0}
+.uchip{font-size:.85rem;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}.uchip .sbtn{min-height:36px;padding:7px 12px}
+.hero{padding:clamp(24px,5vw,48px);gap:20px}
+.depts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.dc,.tile{border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:8px;background:linear-gradient(160deg,hsl(var(--h) 90% 60%/.15),transparent 70%)}
+.ic{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font:800 1.05rem var(--display);color:#fff;background:linear-gradient(135deg,hsl(var(--h) 85% 58%),hsl(calc(var(--h) + 40) 85% 52%));box-shadow:0 8px 20px -8px hsl(var(--h) 85% 55%);flex:none}
+.tile .sc{font:800 2rem/1 var(--display);color:hsl(var(--h) 80% 58%)}.tile .row{justify-content:space-between;flex-wrap:nowrap}
+.sbtn{min-height:42px;padding:10px 14px;font-size:.9rem}
+.stats{display:flex;gap:26px;flex-wrap:wrap}.stats b{display:block;font:800 1.8rem/1 var(--display)}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.meter,.bar,.xp{height:10px;border-radius:99px;background:var(--line);overflow:hidden}.meter i,.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,hsl(var(--h,262) 85% 60%),hsl(calc(var(--h,262) + 40) 85% 55%));transition:width .5s}
+.meter i{background:linear-gradient(90deg,var(--a),var(--b))}.xp i{display:block;height:100%;background:linear-gradient(90deg,#FFB020,#FF5CAA);transition:width .6s}
+.qh{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+.dots{display:inline-flex;gap:4px;vertical-align:middle;margin-left:6px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line);transition:.3s}.dots i.on{background:linear-gradient(135deg,var(--a),var(--b));transform:scale(1.15)}
+.pass{padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,rgba(108,71,255,.1),rgba(0,184,196,.1));border:1px solid var(--line)}
+legend{font:800 1.3rem/1.3 var(--display);letter-spacing:-.015em;padding:0;margin-bottom:12px}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.opt{display:flex;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;transition:.18s;background:var(--card)}
+.opt:hover{border-color:var(--a);transform:translateX(3px)}.opt:has(input:checked){border-color:var(--a);background:linear-gradient(120deg,rgba(108,71,255,.16),rgba(0,184,196,.12))}
+.opt input{accent-color:var(--a);width:18px;height:18px;flex:none}
+.tx{font-style:italic;color:var(--muted)}
+.mic{width:104px;height:104px;border-radius:50%;padding:0;font-size:2rem;background:linear-gradient(135deg,#FF5CAA,var(--a));color:#fff;border:0;position:relative;box-shadow:0 14px 36px -10px #FF5CAA}
+.mic.on::before,.mic.on::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #FF5CAA;animation:pl 1.6s ease-out infinite}.mic.on::after{animation-delay:.8s}
+@keyframes pl{to{transform:scale(1.8);opacity:0}}
+.sp{align-items:center;text-align:center}.sp .q{font:800 1.45rem/1.25 var(--display);max-width:30ch}
+.rate{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;width:100%}
+audio{width:100%;max-width:420px}
+.top{display:grid;grid-template-columns:minmax(180px,240px) 1fr;gap:24px;align-items:center}
+.ring{position:relative;width:100%;max-width:230px;aspect-ratio:1;margin:auto}.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:12;stroke-linecap:round}.ring .t{stroke:var(--line)}.ring .v{stroke:url(#g);stroke-dasharray:565;stroke-dashoffset:565;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
+.ring>div{position:absolute;inset:0;display:grid;place-content:center;text-align:center}.ring b{font:800 3.2rem/1 var(--display)}.ring span{font-size:.75rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.ring.s{max-width:150px}.ring.s b{font-size:2.2rem}
+.radar{width:100%;max-width:360px;margin:auto}.radar polygon.d{animation:rd 1.2s .2s cubic-bezier(.2,.8,.2,1) both;transform-origin:150px 150px}@keyframes rd{from{transform:scale(0);opacity:0}}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{display:flex;gap:8px;align-items:center;padding:8px 12px 8px 8px;min-height:44px}.tab .ic{width:26px;height:26px;border-radius:9px;font-size:.7rem;box-shadow:none}.tab b{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:600}
+.tab.on{border-color:hsl(var(--h) 85% 60%);box-shadow:0 0 0 3px hsl(var(--h) 85% 60%/.2)}
+.pn{display:grid;gap:14px;animation:in .4s both}.big{font:800 3rem/1 var(--display);color:hsl(var(--h) 80% 58%)}
+.reco{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:linear-gradient(120deg,hsl(var(--h) 90% 60%/.12),transparent)}.app{font:800 1.15rem var(--display)}
+.mis{margin:0;padding-left:20px;display:grid;gap:8px;font-size:.92rem}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}label.f{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.9rem}
+select,.inp{font:400 1rem var(--body);padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);min-height:46px;width:100%}
+.ta{width:100%;min-height:240px;font:400 1.05rem/1.55 var(--body);padding:16px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);resize:vertical}
+.days{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}.day{border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;gap:4px;align-content:start}
+.day h3{display:flex;justify-content:space-between;gap:6px}.day h3 span{font:500 .8rem var(--body);color:var(--muted)}.day.rest{border-style:dashed;color:var(--muted)}
+.tk{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer;font-size:.92rem}.tk:last-child{border-bottom:0}
+.tk input{width:22px;height:22px;accent-color:var(--a);flex:none;margin-top:1px}.tk.d span{color:var(--muted)}.tk.d span b{text-decoration:line-through}
+.chips{display:flex;flex-wrap:wrap;gap:8px;min-height:60px;padding:10px;border-radius:14px;border:1.5px dashed var(--line)}
+.chip{min-height:44px;padding:10px 14px;border-radius:12px;font-weight:600}.chip.on{background:linear-gradient(120deg,rgba(108,71,255,.2),rgba(0,184,196,.18));border-color:var(--a)}
+.mrow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid var(--line)}.mrow select{flex:1;min-width:200px;width:auto}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.bd{border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center;display:grid;gap:4px;justify-items:center;background:var(--card)}.bd .e{font-size:2rem;line-height:1.2}.bd.lock{opacity:.45;filter:grayscale(1)}
+#toasts{position:fixed;left:50%;transform:translateX(-50%);bottom:max(16px,env(safe-area-inset-bottom));display:grid;gap:8px;z-index:50;width:min(92vw,420px);pointer-events:none}
+.toast{padding:12px 16px;border-radius:14px;background:var(--ink);color:var(--bg);font-weight:600;font-size:.92rem;animation:in .3s both;box-shadow:0 10px 30px -10px rgba(0,0,0,.5)}.toast.xp{background:linear-gradient(120deg,var(--a),var(--b));color:#fff}
+.tw{overflow-x:auto}.tbl{width:100%;border-collapse:collapse;font-size:.9rem;min-width:560px}.tbl th,.tbl td{padding:10px 8px;text-align:left;border-bottom:1px solid var(--line)}.tbl th{color:var(--muted);font-weight:600}
+.chart{width:100%;height:auto}
+.pill{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.78rem;font-weight:700;background:var(--line)}.pill.ok{background:rgba(18,128,90,.16);color:var(--ok)}.pill.bad{background:rgba(194,65,12,.15);color:var(--bad)}
+.crit{display:grid;gap:12px}.crit .r{display:grid;gap:5px}.crit .r>div:first-child{display:flex;justify-content:space-between;font-weight:600;font-size:.92rem}.crit .tip{font-size:.85rem;color:var(--muted)}
+.banner{border:1px solid var(--a);border-radius:16px;padding:14px 16px;background:linear-gradient(120deg,rgba(108,71,255,.14),rgba(0,184,196,.1));display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.tabsx{display:flex;gap:6px;flex-wrap:wrap}.tabsx button.on{background:linear-gradient(120deg,var(--a),var(--b));color:#fff;border:0}
+ul.l{margin:0;padding-left:20px;display:grid;gap:6px}
+footer{color:var(--muted);font-size:.8rem;text-align:center}
+@media (max-width:640px){.top{grid-template-columns:1fr}.card{padding:18px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="aur"><i></i><i></i><i></i></div>
+<div class="wrap"><header id="hdr"></header><main id="app"></main>
+<footer>Applingo gives a quick adaptive estimate, not an official certificate. Accounts and results are stored in this browser only. Nothing is uploaded unless you choose to send a report to your teacher. In some browsers (for example Chrome) speech-to-text may send your voice to the browser’s own speech service.</footer></div>
+<div id="toasts" aria-live="polite"></div>
+<script>
+'use strict';
+/* ===== CONFIG: to send weekly reports by email automatically, create a free EmailJS account (emailjs.com),
+   make a template that uses {{to_email}}, {{student_name}}, {{subject}}, {{message}} and paste the three values here. ===== */
+const CFG={emailjs:{service:'',template:'',key:''}};
+const N=8;
+const GROUPS=['Core skills','Productive skills','Real-life English'];
+const D=[
+{k:'grammar',n:'Grammar',s:'Grammar',ic:'Aa',h:262,g:0,kind:'mc',app:'Duolingo',why:'Short lessons with instant feedback train grammar patterns.',task:'Duolingo: one lesson, then redo the mistakes'},
+{k:'vocab',n:'Vocabulary',s:'Vocab',ic:'✦',h:190,g:0,kind:'mc',app:'Quizlet',why:'Spaced-repetition flashcards fix words in long-term memory.',task:'Quizlet: Learn mode on one set, then one Match game'},
+{k:'reading',n:'Reading',s:'Reading',ic:'❡',h:330,g:0,kind:'mc',app:'Duolingo Stories',why:'Short stories with questions build reading speed and inference.',task:'Duolingo Stories: one story, then say the main idea aloud'},
+{k:'listening',n:'Listening',s:'Listening',ic:'♪',h:38,g:0,kind:'mc',app:'Memrise',why:'Clips of real speakers train your ear for natural speed.',task:'Memrise: native-speaker clips, then replay without subtitles'},
+{k:'writing',n:'Writing',s:'Writing',ic:'✎',h:10,g:1,kind:'write',app:'Notes app + teacher feedback',why:'Writing a short text every day builds accuracy faster than reading alone.',task:'Writing: one paragraph (5–8 sentences) on today’s topic in a notes app, then check it with a teacher'},
+{k:'speaking',n:'Speaking',s:'Speaking',ic:'◉',h:150,g:1,kind:'speak',app:'Cake',why:'Repeat-and-record video lessons build fluency and pronunciation.',task:'Cake: one video lesson, repeat and record each phrase'},
+{k:'apps',n:'App English',s:'Apps',ic:'☎',h:222,g:2,kind:'mc',app:'Quizlet',why:'Words like update, settings and subscription appear in every app you use.',task:'Quizlet: a set of app and tech words, then switch one of your apps to English'},
+{k:'daily',n:'Everyday English',s:'Everyday',ic:'☺',h:95,g:2,kind:'mc',app:'Busuu',why:'Short real-life dialogues teach the phrases people really use.',task:'Busuu: one everyday-conversation lesson, then say the phrases aloud'}];
+const DK={},DI={};D.forEach((d,i)=>{DK[d.k]=d;DI[d.k]=i});
+const B={};D.forEach(d=>{B[d.k]=[]});
+function I(k,l,q,o,a,x){B[k].push({l,q,o,a,x})}
+function G(k,l,q,a,x){B[k].push({l,t:'gap',q,a,x})}
+function O(k,l,w,a){B[k].push({l,t:'ord',q:'Put the words in the correct order.',w,a})}
+function T(k,l,x,q,a){B[k].push({l,t:'tf',x,q,o:['True','False','Not stated'],a})}
+function M(k,l,p){B[k].push({l,t:'mat',q:'Match each word with its meaning.',p})}
+/* grammar */
+I('grammar',1,'She ___ a student.',['am','is','are','be'],1);I('grammar',1,'They ___ football on Sundays.',['plays','play','playing','is play'],1);
+I('grammar',1,'I ___ breakfast at seven every day.',['have','has','having','am have'],0);I('grammar',1,'This is ___ apple.',['a','an','the','some'],1);
+G('grammar',1,'Complete: She ___ (have) two brothers.',['has']);
+I('grammar',2,'I ___ TV when you called.',['watch','was watching','watched','am watching'],1);I('grammar',2,"There isn’t ___ milk.",['some','any','a','many'],1);
+I('grammar',2,'She is ___ than her sister.',['tall','taller','tallest','more tall'],1);I('grammar',2,'We ___ to the cinema yesterday.',['go','went','gone','going'],1);
+G('grammar',2,'Complete: My brother ___ (go) to school by bus every day.',['goes']);
+I('grammar',3,'If it rains tomorrow, we ___ at home.',['stay','will stay','stayed','would stay'],1);I('grammar',3,'I have lived here ___ 2019.',['for','since','from','during'],1);
+I('grammar',3,'The letter ___ yesterday.',['was sent','sent','is sent','has send'],0);I('grammar',3,'You ___ smoke here. It is forbidden.',['mustn’t','don’t have to','needn’t','shouldn’t to'],0);
+I('grammar',3,'He asked me where ___.',['did I live','I lived','I live did','do I live'],1);
+G('grammar',3,'Complete: I have never ___ (eat) sushi before.',['eaten']);
+O('grammar',3,['she','has','already','finished','her','homework'],['she has already finished her homework','she has finished her homework already']);
+I('grammar',4,'If I ___ more time, I would learn Spanish.',['have','had','will have','would have'],1);I('grammar',4,'She suggested ___ earlier.',['to leave','leaving','leave','left'],1);
+I('grammar',4,'By the time we arrived, the film ___.',['already started','had already started','has already started','was already start'],1);
+I('grammar',4,'I’d rather you ___ here.',['not smoke','didn’t smoke','don’t smoke','won’t smoke'],1);I('grammar',4,'She is the person ___ car was stolen.',['who','whose','which','whom'],1);
+G('grammar',4,'Complete: If I ___ (be) you, I would study more.',['were','was']);
+O('grammar',4,['the','book','which','I','bought','was','expensive'],['the book which i bought was expensive']);
+I('grammar',5,'Had I known, I ___ you.',['would tell','would have told','will tell','told'],1);I('grammar',5,'Hardly ___ the house when it began to rain.',['he left','had he left','did he left','he had left'],1);
+I('grammar',5,'I wish I ___ more free time.',['had','have','would have','will have'],0);
+I('grammar',5,'Not only ___ late, but he also forgot the documents.',['he was','was he','did he','he is'],1);
+I('grammar',5,'Were it not for your help, I ___ failed.',['would have','will have','had','would'],0);I('grammar',5,'It is high time we ___ a decision.',['make','made','will make','have made'],1);
+O('grammar',5,['if','we','had','known','we','would','have','helped'],['if we had known we would have helped']);
+G('grammar',5,'Complete: By next year, she ___ (live) here for ten years.',['will have lived']);
+/* vocab */
+I('vocab',1,'A place where you borrow books is a ___.',['market','library','museum','garage'],1);I('vocab',1,'The opposite of “hot” is ___.',['cold','warm','big','new'],0);
+I('vocab',1,'You wear a ___ on your head.',['hat','shoe','glove','sock'],0);I('vocab',1,'Breakfast, lunch and ___ are meals.',['dinner','kitchen','menu','plate'],0);
+I('vocab',2,'“Enormous” means ___.',['very old','very small','very big','very fast'],2);I('vocab',2,'I need to ___ a decision soon.',['do','make','take part','have on'],1);
+I('vocab',2,'A person who teaches is a ___.',['doctor','teacher','driver','cook'],1);I('vocab',2,'“Fix” is the same as ___.',['repair','break','lose','buy'],0);
+M('vocab',2,[['borrow','take for a short time'],['journey','a trip from one place to another'],['empty','with nothing inside'],['quiet','making little noise']]);
+G('vocab',2,'Complete: The opposite of “expensive” is c____.',['cheap']);
+I('vocab',3,'She was ___ because she failed the exam.',['delighted','disappointed','relaxed','excited'],1);I('vocab',3,'The meeting was ___, so it did not take place.',['cancelled','recorded','repeated','improved'],0);
+I('vocab',3,'“Fluent” means speaking a language ___.',['badly','easily and well','very loudly','slowly'],1);I('vocab',3,'You should ___ your homework before Friday.',['hand in','hand out','give off','take on'],0);
+G('vocab',3,'Complete: If you do not know a word, look it ___ in a dictionary.',['up']);G('vocab',3,'Complete: The opposite of “increase” is d_____.',['decrease']);
+M('vocab',3,[['improve','get better'],['prefer','like one thing more'],['achieve','succeed in doing'],['ancient','very old']]);
+I('vocab',4,'“Reluctant” means ___.',['eager','unwilling','careless','certain'],1);I('vocab',4,'We must ___ the problem before it gets worse.',['tackle','tickle','attach','reserve'],0);
+I('vocab',4,'“Scarce” means ___.',['plentiful','hard to find','expensive','dangerous'],1);I('vocab',4,'She has a ___ for languages; she learns them quickly.',['talent','habit','reason','custom'],0);
+M('vocab',4,[['reliable','you can trust it'],['brief','short'],['require','need'],['generous','happy to give']]);
+I('vocab',5,'“Ubiquitous” means ___.',['rare','found everywhere','ancient','harmful'],1);I('vocab',5,'His argument was ___; nobody could find a flaw in it.',['flimsy','watertight','ambiguous','redundant'],1);
+I('vocab',5,'“Meticulous” means ___.',['careless','very careful about details','very quick','very rich'],1);I('vocab',5,'The new law will ___ many small businesses. (make worse)',['bolster','undermine','sustain','foster'],1);
+M('vocab',5,[['inevitable','sure to happen'],['reluctant','unwilling'],['subtle','not obvious'],['thrive','grow strongly']]);
+I('vocab',5,'Which word means “to make something less severe”?',['alleviate','aggravate','accelerate','accumulate'],0);
+/* reading */
+I('reading',1,'How does Tom go to school?',['By bus','By bike','On foot','By car'],1,'Tom has a red bike. He rides it to school every day.');
+I('reading',1,'What does Anna put in her tea?',['Sugar','Lemon','Milk','Nothing'],2,'Anna likes tea. She drinks it with milk but no sugar.');
+I('reading',1,'What colour is Sara’s bag?',['Red','Blue','Green','Black'],1,'Sara has a new bag. It is blue and it has two pockets.');
+T('reading',1,'Aigul has a cat called Mimi. Mimi likes to sleep on the sofa.','Mimi sleeps in a basket.',1);
+T('reading',1,'Ben has two sisters and one brother. He is the youngest.','Ben has three brothers.',1);
+I('reading',2,'Why did her father drive her?',['It was raining','She was late','She was ill','Her bike broke'],0,'Aigerim usually walks to school, but on Monday it rained, so her father drove her. The journey took 20 minutes.');
+I('reading',2,'When does the café close on Sunday?',['At 6','At 8','At noon','It is closed'],2,'The café opens at 8 and closes at 6, but on Sundays it closes at noon.');
+I('reading',2,'Where will they meet?',['At school','At the park','At the cinema','At home'],1,'Let’s meet at the park at four o’clock. We can play football and then go home together.');
+I('reading',2,'What does Lina do on Saturdays?',['Works','Visits her grandmother','Goes to school','Sleeps all day'],1,'On weekdays Lina studies, but on Saturdays she visits her grandmother and helps her in the garden.');
+T('reading',2,'Tom wakes up at six and runs for twenty minutes before breakfast.','Tom runs in the morning.',0);
+I('reading',3,'What was good about the coach?',['Faster','Cheaper','More comfortable','Closer'],1,'Maria wanted to take the train, but tickets were sold out, so she took a coach. It was slower, but cheaper.');
+I('reading',3,'How did Dan feel afterwards?',['Still worried','Relieved','Angry','Bored'],1,'“The test was easier than I expected,” said Dan. “I had worried for nothing.”');
+I('reading',3,'Why did Omar change his plan?',['He was tired','The weather was bad','He lost his ticket','His friend was ill'],1,'Omar wanted to go hiking, but heavy rain started in the morning, so he stayed at home and read a book instead.');
+T('reading',3,'Daniyar started learning English with apps in September. After two months he understood short videos without subtitles, but he still finds writing difficult.','Daniyar now finds writing easy.',1);
+T('reading',3,'The new gym opens at 6 a.m. and closes at 10 p.m. Members can bring one guest on weekends.','Guests are allowed on weekdays.',2);
+I('reading',4,'What did the residents complain about?',['Traffic got worse everywhere','The problem just moved elsewhere','The policy cost too much','Nobody was told'],1,'Although the new policy was intended to reduce traffic, residents complained that it merely moved congestion to nearby streets.');
+I('reading',4,'What is the critics’ view?',['Great visuals, shallow characters','Weak visuals, deep story','Too long','Too violent'],0,'Critics argue that the film, while visually stunning, sacrifices character depth for spectacle.');
+I('reading',4,'What is the writer’s main point?',['Cities are too noisy','Green spaces improve wellbeing','Parks are expensive','People hate cities'],1,'Studies suggest that residents with access to parks report lower stress and better sleep, which is why planners increasingly argue that green spaces are essential rather than decorative.');
+T('reading',4,'The museum opened in 1998 and attracts about 200,000 visitors a year.','Entry to the museum is free for children.',2);
+T('reading',4,'Many teenagers say they study better with music, yet researchers found that students who studied in silence remembered more facts.','The research supports studying with music.',1);
+I('reading',5,'What does the passage suggest about the praise?',['It is sincere','It is subtly sarcastic','It is accidental','It is purely factual'],1,'The author’s seemingly effusive praise is, on closer reading, laced with irony: each compliment quietly undermines the very quality it ostensibly celebrates.');
+I('reading',5,'The company’s withdrawal was ___.',['a failure','a strategic choice','forced by regulators','a mistake'],1,'Far from being a retreat, the company’s withdrawal from the market was a calculated manoeuvre to consolidate resources elsewhere.');
+I('reading',5,'The writer’s tone is best described as ___.',['enthusiastic','sceptical','neutral','angry'],1,'Proponents hail the scheme as revolutionary; yet, strikingly, no independent audit has verified a single one of its claims.');
+T('reading',5,'The developers claim that users learn faster, but the company has not published its data, so independent teachers cannot check the claim.','Independent teachers have confirmed the claim.',1);
+/* listening (IDs L01, L02... follow this order: add new items only at the END) */
+I('listening',1,'How many people is the table for?',['Two','Three','Four','Seven'],1,"Hello, I’d like a table for three people at seven o’clock.");
+I('listening',1,'How old is Sam?',['Seven','Ten','Twelve','Fifteen'],1,'My name is Sam and I am ten years old.');
+I('listening',2,'When can you visit the museum?',['Monday at ten','Monday at six','Tuesday at five','Never'],2,'The museum is closed on Mondays, but it is open from ten to six on other days.');
+I('listening',2,'Where does the airport bus leave from?',['Platform two','Platform four','Platform fourteen','Platform twenty'],1,'The bus to the airport leaves every twenty minutes from platform four.');
+I('listening',3,'What will they do this afternoon?',['Go swimming','Watch a film at home','Visit the doctor','Go to the cinema'],1,'I wanted to go swimming this afternoon, but my brother has a cold, so we are going to stay at home and watch a film.');
+I('listening',3,'Where is the post office?',['Next to the bank','Next to the supermarket, after the bank','Opposite the bank','Behind the supermarket'],1,'Excuse me, how do I get to the post office? Go straight, turn left at the bank, and it’s next to the supermarket.');
+I('listening',4,'Why will he wait to book?',['The hotel is full','Prices are too high now','He lost the number','The festival is cancelled'],1,'I was going to book the hotel, but the prices have doubled since last week, so I’ll wait until the festival ends.');
+I('listening',4,'Why was the lecture moved?',['Room 12 closed','The lecturer is ill','Too many students signed up','The projector broke'],2,'The lecture has been moved from Room 12 to the main hall because so many students signed up.');
+I('listening',5,'What is the speaker’s attitude?',['Fully convinced','Cautious','Dismissive','Excited'],1,'Admittedly, the results were encouraging, but I’d hesitate to draw firm conclusions from such a small sample.');
+I('listening',5,'What has the airline done?',['Openly raised ticket prices','Quietly added extra fees','Cut luggage fees','Removed seat selection'],1,'Rather than raising prices outright, the airline has quietly introduced extra fees for luggage and seat selection.');
+T('listening',1,'Hello, my name is Aigerim. I live in Taraz with my mother, my father and my little sister.','Aigerim lives with her grandmother.',1);
+I('listening',2,'When does the film start?',['7:00','7:30','8:30','9:00'],1,'A: Excuse me, what time does the film start? B: At half past seven.');
+G('listening',2,'The party starts at ___ o’clock.',['four','4'],'My birthday party is on Saturday. It starts at four o’clock, and everyone must bring a small present.');
+I('listening',3,'How did he get to school?',['By bus','On foot','By bike','By car'],1,'A: Why are you late? B: My bus broke down, so I walked. A: That’s a long way! B: Yes, nearly an hour.');
+G('listening',3,'Bring warm clothes, a flashlight and a lot of ___.',['water'],'We are going to the mountains for a camping trip. Please bring warm clothes, a flashlight and a lot of water.');
+T('listening',3,'The school trip has been moved from Friday to Monday because of the weather.','The trip is now on Friday.',1);
+G('listening',4,'Students will be able to borrow up to ___ books.',['five','5'],'The new library opens next month, and students will be able to borrow up to five books at once.');
+I('listening',4,'Why did he choose the second app?',['It was cheaper','It was more challenging','It was more fun','A friend suggested it'],1,'A: Have you decided which app to use for your English? B: I tried two. The first was fun but too easy, so I chose the second one, even though it costs a little.');
+I('listening',5,'What is the speaker’s main point?',['Homework should be abolished','Too much homework can harm learning','Pupils never do homework','Homework is always useful'],1,'Although homework can be useful, too much of it leaves pupils no time to rest, which actually makes learning worse.');
+I('listening',5,'What does B suggest?',['The club meets at weekends, so A can join','A should skip training','The club is full','A should come every evening'],0,'A: I’d love to join the club, but I have training three evenings a week. B: Don’t worry, we only meet on Saturdays.');
+/* new listening items (L25 onward) */
+I('listening',1,'What does the girl want to drink?',['Tea','Water','Juice','Milk'],2,'Hi! I’d like a glass of orange juice, please.');
+I('listening',1,'What day is the English lesson?',['Monday','Tuesday','Friday','Sunday'],2,'Don’t forget, our English lesson is on Friday.');
+I('listening',2,'How much is the ticket?',['Five dollars','Fifteen dollars','Fifty dollars','Fourteen dollars'],1,'A ticket to the zoo costs fifteen dollars for adults.');
+G('listening',2,'The shop opens at ___ in the morning.',['nine','9'],'Our shop opens at nine in the morning and closes at eight in the evening.');
+I('listening',3,'Why is she calling?',['To cancel an appointment','To order pizza','To ask for directions','To book a table'],0,'Hello, this is Anna Brown. I’m afraid I can’t come to my appointment tomorrow, so I’d like to cancel it, please.');
+I('listening',3,'What will the weather be like tomorrow?',['Sunny all day','Rain in the afternoon','Snow in the morning','Windy at night'],1,'Tomorrow morning will be dry and bright, but expect heavy rain from about two in the afternoon.');
+I('listening',4,'What does the speaker recommend?',['Taking the train','Driving early','Staying at home','Flying'],0,'The roads will be extremely busy this weekend, so if I were you, I’d take the train rather than drive.');
+I('listening',4,'What problem does the customer have?',['The item arrived damaged','The item is late','The colour is wrong','It is too expensive'],0,'I ordered this lamp last week, but when I opened the box, the glass was cracked.');
+I('listening',5,'What does the speaker imply?',['The plan will succeed','The plan is risky','The plan is cheap','The plan is finished'],1,'It’s an ambitious proposal, no doubt, but I can’t help wondering who will pay for it if things go wrong.');
+B.listening.forEach((q,i)=>{q.id='L'+(i<9?'0':'')+(i+1)});
+/* apps */
+M('apps',1,[['download','get an app on your phone'],['battery','gives power to your phone'],['screen','the part you touch and look at'],['password','a secret word to open an account']]);
+I('apps',1,'What does “install” mean?',['Put an app on your device','Delete an app','Share a photo','Turn the sound off'],0);
+I('apps',1,'What does “log in” mean?',['Enter your account','Delete the app','Take a photo','Send money'],0);
+T('apps',2,'Notification: “Your streak is 5 days! Practise today to keep it going.”','The app wants you to study again today.',0);
+I('apps',2,'You see “Low battery”. What should you do?',['Charge your phone','Update the app','Delete your account','Turn on the sound'],0);
+I('apps',2,'Which button do you press to send a message?',['Send','Cancel','Back','Stop'],0);
+T('apps',2,'Your download is complete. Tap Open to start the app.','You must wait for the download.',1);
+I('apps',3,'What does the update add?',['A new speaking mode','A new language','A lower price','A new password'],0,'Update available: this version fixes bugs and adds a new speaking mode.');
+M('apps',3,[['subscription','you pay regularly to use it'],['notification','a short message from an app'],['settings','where you change how an app works'],['account','your personal profile in an app']]);
+T('apps',3,'Free plan: 5 lessons a day. Premium plan: unlimited lessons and no adverts.','The free plan has no adverts.',2);
+I('apps',3,'The message says “Storage almost full”. What can you do?',['Delete old photos','Buy a new account','Raise the volume','Rotate the screen'],0);
+G('apps',3,'To get new features, you need to ___ the app.',['update']);
+I('apps',4,'What does the company say about your data?',['It may share it with partners','It never shares it','It deletes it every day','You must pay to see it'],0,'We may share your usage data with partners to improve our services.');
+G('apps',4,'To keep your account safe, choose a strong ___ with letters, numbers and symbols.',['password']);
+O('apps',4,['you','can','cancel','your','subscription','at','any','time'],['you can cancel your subscription at any time']);
+I('apps',4,'What does “opt out” mean?',['Choose not to take part','Pay twice','Open the app','Share a link'],0);
+T('apps',4,'Terms: Your free trial lasts 7 days. After that, you will be charged $5 a month unless you cancel.','You pay from the first day.',1);
+I('apps',5,'What can you do after tapping Accept?',['Change your mind in Settings','Nothing, it is permanent','Call the police','Delete the phone'],0,'By tapping Accept, you agree to our Terms of Use. You can withdraw your consent at any time in Settings.');
+T('apps',5,'A review says: “The app is addictive, but the speaking lessons helped me, though the free version has too many adverts.”','The reviewer thinks the lessons are useless.',1);
+G('apps',5,'A fake message that tries to steal your data is a s___.',['scam','phishing']);
+I('apps',5,'What does the policy allow the company to do?',['Use anonymised data for research','Sell your password','Read your private messages','Use your camera at any time'],0,'We may use anonymised, aggregated data for research purposes, but we will never share personally identifiable information without your consent.');
+/* everyday English */
+I('daily',1,'You meet a friend in the morning. You say ___.',['Good night','Good morning','Goodbye','Sorry'],1);
+I('daily',1,'“How are you?” – “___”',['I’m fine, thanks.','My name is Ali.','Yes, please.','At six.'],0);
+I('daily',1,'In a shop you ask: “How ___ is this?”',['much','many','long','old'],0);
+I('daily',1,'Choose the correct reply: “Nice to meet you.”',['Nice to meet you, too.','I am nine.','It’s Monday.','Sorry, no.'],0);
+G('daily',1,'Complete: “What’s your ___?” – “My name is Ali.”',['name']);
+I('daily',2,'At a café: “Can I have a coffee, ___?”',['please','sorry','welcome','excuse'],0);
+I('daily',2,'You did not hear. You say: “___?”',['Pardon','Thanks','Goodbye','Cheers'],0);
+I('daily',2,'“Would you like some tea?” – “___”',['Yes, please.','Yes, I like.','I am tea.','No, I don’t tea.'],0);
+I('daily',2,'You are late. You say: “I’m ___.”',['sorry','sorrow','sad','pity'],0);
+M('daily',2,[['Excuse me','to get attention politely'],['Sorry','you say it when you make a mistake'],['Thank you','you say it when someone helps'],['Welcome','you say it to a guest']]);
+G('daily',2,'Complete: “Nice to meet ___.”',['you']);
+I('daily',3,'You want to know the way. You say:',['Could you tell me where is the bus stop?','Could you tell me where the bus stop is?','Tell me where is the bus stop.','Where the bus stop is?'],1);
+I('daily',3,'On the phone: “Can I speak ___ Mr Lee, please?”',['to','at','for','with on'],0);
+I('daily',3,'Your friend invites you but you cannot come. The politest reply:',['No.','I’d love to, but I’m afraid I can’t.','I don’t want.','Never.'],1);
+I('daily',3,'The waiter brings the wrong dish. You say:',['Excuse me, I think there’s been a mistake.','This is terrible!','Take it away, silly.','Nothing.'],0);
+G('daily',3,'Complete: “What time does the train ___ (leave)?”',['leave']);
+O('daily',3,['could','you','help','me','please'],['could you help me please','please could you help me']);
+T('daily',3,'Message from a friend: “Running 10 min late, start without me!”','The friend will arrive late.',0);
+I('daily',4,'At a hotel: “I’d like to ___ a room for two nights.”',['book','borrow','bring','buy'],0);
+I('daily',4,'“It’s a piece of cake” means ___.',['it is very easy','it is delicious','it is expensive','it is dangerous'],0);
+I('daily',4,'You disagree politely. You say:',['That’s wrong.','I see your point, but I’m not sure I agree.','You are stupid.','No way, never.'],1);
+I('daily',4,'“Break a leg!” is said to wish someone ___.',['bad luck','good luck','a speedy recovery','a happy birthday'],1);
+T('daily',4,'Shop sign: “Buy two, get one free. Offer ends Sunday.”','You pay for every item.',1);
+I('daily',5,'“Let’s call it a day” means ___.',['stop working for now','start a new project','make a phone call','take a day off tomorrow'],0);
+I('daily',5,'“I’m under the weather” means ___.',['I’m outside','I’m slightly ill','I’m angry','I’m very happy'],1);
+I('daily',5,'Which sentence is a polite request?',['Give me the menu.','I was wondering if I could see the menu.','Menu now.','You must bring the menu.'],1);
+I('daily',5,'“The ball is in your court” means ___.',['it is your turn to act','you play tennis well','you lost','you must pay'],0);
+/* writing prompts & speaking prompts */
+const ESS=[
+{l:1,q:'Write about your family and your daily routine.',min:50,p:1,kw:['family','mother','father','brother','sister','morning','school','every']},
+{l:2,q:'Describe your best friend and explain why you like spending time together.',min:80,p:2,kw:['friend','because','together','like','funny','weekend']},
+{l:3,q:'Write an email to a friend about your last holiday. Say where you went, what you did and what you liked.',min:110,p:2,kw:['holiday','went','visited','weather','hotel','amazing','food']},
+{l:4,q:'Do you think students should use AI tools to help with their homework? Give reasons and examples.',min:150,p:3,kw:['ai','homework','learn','students','teachers','advantages','however']},
+{l:5,q:'Some people believe that technology makes us less sociable. To what extent do you agree or disagree?',min:200,p:3,kw:['technology','people','communicate','social','however','argue','conclusion']}];
+const SPQ=[
+{q:'Introduce yourself. Talk about your family and your hobbies.',kw:['name','family','like','hobby','live','my']},
+{q:'Describe your daily routine, from the morning to the evening.',kw:['morning','school','then','usually','evening','every']},
+{q:'Describe your favourite place and explain why you like it.',kw:['place','because','like','beautiful','love','people']},
+{q:'Tell me about a day when something interesting happened to you.',kw:['yesterday','was','went','because','then','happened']},
+{q:'Some people say social media does more harm than good. What do you think? Give reasons and examples.',kw:['social','media','think','because','example','however']}];
+/* ===== utils ===== */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cl=(x,a,b)=>Math.max(a,Math.min(b,x));
+const ymd=d=>{d=d||new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+function monday(d){d=d?new Date(d):new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return ymd(d)}
+const todayIdx=()=>(new Date().getDay()+6)%7;
+const hs=d=>'--h:'+d.h;
+const lvl=s=>s==null||s<0?'–':s<20?'A1':s<40?'A2':s<60?'B1':s<80?'B2':'C1';
+const LV=x=>Math.floor(x/150)+1;
+const enc=s=>btoa(unescape(encodeURIComponent(s))),dec=s=>decodeURIComponent(escape(atob(s)));
+const hex=b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
+function rnd(){try{return hex(crypto.getRandomValues(new Uint8Array(8)))}catch(e){return String(Math.random()).slice(2)}}
+async function hashPw(pw,salt){try{if(window.crypto&&crypto.subtle){const k=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveBits']);return hex(await crypto.subtle.deriveBits({name:'PBKDF2',salt:new TextEncoder().encode(salt),iterations:120000,hash:'SHA-256'},k,256))}}catch(e){}
+let h=5381;const s=salt+pw;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return 'f'+(h>>>0).toString(16)}
+let DB=null;try{DB=JSON.parse(localStorage.getItem('applingo_v2')||'null')}catch(e){}
+DB=DB||{users:{},session:null};
+function save(){try{localStorage.setItem('applingo_v2',JSON.stringify(DB))}catch(e){toast('Could not save (private mode or storage full).')}}
+function toast(m,k){const t=document.createElement('div');t.className='toast '+(k||'');t.textContent=m;const c=$('#toasts');if(c){c.appendChild(t);setTimeout(()=>t.remove(),3800)}}
+function copy(text,msg){const fb=()=>{const a=document.createElement('textarea');a.value=text;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast(msg||'Copied')}catch(e){toast('Select and copy the text manually')}a.remove()};
+if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(()=>toast(msg||'Copied'),fb);else fb()}
+function dl(name,text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/csv'}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+/* ===== user model ===== */
+let U=DB.users[DB.session]||null,TS=null,V={n:'home'},AFTER=null,autoSent=false;
+function newStudent(o){return{role:'student',name:o.name,login:o.login,grade:o.grade,teacher:o.teacher,pass:o.pass,created:Date.now(),xp:0,streak:0,last:'',badges:{},hist:[],done:{},paid:{},plan:null,prefs:{mins:30,dpw:5},weeks:[],stats:{tasks:0,perfect:0,weekFull:0},det:{},essays:[],pending:null}}
+const latest=u=>{const l={};u.hist.forEach(h=>{l[h.k]=h.s});return l};
+function prevS(u,k){const a=u.hist.filter(h=>h.k===k);return a.length>1?a[a.length-2].s:null}
+function overall(u){const v=Object.values(latest(u));return v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length):null}
+function climbed(u){return D.some(d=>{const a=u.hist.filter(h=>h.k===d.k).map(h=>h.s);for(let i=0;i<a.length;i++)for(let j=i+1;j<a.length;j++)if(a[j]-a[i]>=10)return true;return false})}
+const BG=[
+{id:'first',n:'First Step',e:'⭐',d:'Finish your first department test',f:u=>u.hist.length>0},
+{id:'all',n:'All-Rounder',e:'🎯',d:'Test all 8 departments',f:u=>Object.keys(latest(u)).length>=D.length},
+{id:'perf',n:'Flawless',e:'💎',d:'Answer every question correctly in one test',f:u=>u.stats.perfect>0},
+{id:'hi',n:'High Flyer',e:'🚀',d:'Score 80+ in any department',f:u=>u.hist.some(h=>h.s>=80)},
+{id:'s3',n:'On a Roll',e:'🔥',d:'Study 3 days in a row',f:u=>u.streak>=3},
+{id:'s7',n:'Week Warrior',e:'👑',d:'Study 7 days in a row',f:u=>u.streak>=7},
+{id:'t5',n:'Doer',e:'✅',d:'Complete 5 plan tasks',f:u=>u.stats.tasks>=5},
+{id:'t20',n:'Task Master',e:'🏆',d:'Complete 20 plan tasks',f:u=>u.stats.tasks>=20},
+{id:'wr',n:'Essayist',e:'✍️',d:'Write an essay',f:u=>u.hist.some(h=>h.k==='writing')},
+{id:'sp',n:'Voice of Applingo',e:'🎤',d:'Complete the speaking test',f:u=>u.hist.some(h=>h.k==='speaking')},
+{id:'cl',n:'Climber',e:'📈',d:'Improve a department score by 10+ points',f:climbed},
+{id:'wk',n:'Perfect Week',e:'☀️',d:'Finish 100% of a weekly plan',f:u=>u.stats.weekFull>0},
+{id:'l5',n:'Level 5',e:'🌟',d:'Reach level 5',f:u=>LV(u.xp)>=5}];
+function checkBadges(){BG.forEach(b=>{if(!U.badges[b.id]&&b.f(U)){U.badges[b.id]=ymd();U.xp+=25;toast(b.e+' New badge: '+b.n+' (+25 XP)','xp')}})}
+function addXP(n,why){const a=LV(U.xp);U.xp+=n;toast('+'+n+' XP · '+why,'xp');if(LV(U.xp)>a)toast('🎉 Level up! You are level '+LV(U.xp),'xp')}
+function touch(){const t=ymd();if(U.last===t)return;const y=new Date();y.setDate(y.getDate()-1);U.streak=U.last===ymd(y)?U.streak+1:1;U.last=t}
+/* ===== adaptive weekly plan ===== */
+const DN=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],PT={3:[0,2,4],4:[0,1,3,4],5:[0,1,2,3,4],6:[0,1,2,3,4,5],7:[0,1,2,3,4,5,6]};
+const r5=x=>Math.round(x/5)*5;
+const tt=b=>b.k==='review'?'Review your mistakes and redo them in the apps':DK[b.k].task;
+function build(u,wk,pf,miss){const S=latest(u),study=PT[pf.dpw],last=study[study.length-1],rv=pf.mins>=30,caps={},notes=[];let tot=0;
+study.forEach(x=>{caps[x]=pf.mins-(rv&&x===last?10:0);tot+=caps[x]});
+const w={};let sw=0;const hasMiss=Object.keys(miss).length>0;
+D.forEach(d=>{const s=S[d.k]==null?40:S[d.k],m=miss[d.k]||0;let x=100-s+10;x*=1+.6*m;if(hasMiss&&m===0&&s>=75)x*=.8;w[d.k]=x;sw+=x;if(m>=.5)notes.push(d.n+': most tasks were skipped last week, so it gets extra time and comes earlier.')});
+const ks=D.map(d=>d.k),order=ks.slice().sort((a,b)=>w[b]-w[a]),rem={};let left=tot;
+D.forEach(d=>{rem[d.k]=Math.floor(tot*w[d.k]/sw/5)*5;left-=rem[d.k]});for(let i=0;left>=5;i=(i+1)%ks.length){rem[order[i]]+=5;left-=5}
+const weak=D.filter(d=>S[d.k]!=null).sort((a,b)=>S[a.k]-S[b.k]).slice(0,2).map(d=>d.n),un=D.filter(d=>S[d.k]==null).map(d=>d.n);
+if(weak.length)notes.unshift('Focus this week: '+weak.join(' and ')+' (your lowest scores).');
+if(un.length)notes.push('Not tested yet: '+un.join(', ')+'. Take those tests so the plan can adapt to them.');
+const days={};
+study.forEach(x=>{let c=caps[x];const bl=[];while(c>0){const s=ks.slice().sort((a,b)=>rem[b]-rem[a])[0];if(rem[s]<=0)break;const t=Math.min(rem[s],c>20?r5(c*.6):c);if(t<=0)break;rem[s]-=t;c-=t;const f=bl.find(b=>b.k===s);if(f)f.m+=t;else bl.push({k:s,m:t})}
+if(c>0&&bl.length)bl[0].m+=c;if(rv&&x===last)bl.push({k:'review',m:10});bl.forEach(b=>{b.id=wk+'|'+x+'|'+b.k});days[x]=bl});
+return{wk,pf:{mins:pf.mins,dpw:pf.dpw},days,notes,miss}}
+function wkStats(u){const by={review:{p:0,d:0}};D.forEach(d=>{by[d.k]={p:0,d:0}});let p=0,d=0;
+if(u.plan&&u.plan.wk===monday())Object.values(u.plan.days).forEach(bl=>bl.forEach(b=>{p+=b.m;by[b.k].p+=b.m;if(u.done[b.id]){d+=b.m;by[b.k].d+=b.m}}));
+return{p,d,by,pc:p?Math.round(d/p*100):0}}
+function ensurePlan(u){const wk=monday();if(u.plan&&u.plan.wk===wk)return;const miss={};
+if(u.plan){let p=0,d=0;const by={};D.forEach(x=>{by[x.k]={p:0,d:0}});Object.values(u.plan.days).forEach(bl=>bl.forEach(b=>{p+=b.m;if(by[b.k])by[b.k].p+=b.m;if(u.done[b.id]){d+=b.m;if(by[b.k])by[b.k].d+=b.m}}));
+D.forEach(x=>{miss[x.k]=by[x.k].p?1-by[x.k].d/by[x.k].p:0});
+u.weeks.push({wk:u.plan.wk,p,d,pc:p?Math.round(d/p*100):0,ov:overall(u),bd:D.map(x=>[by[x.k].p,by[x.k].d])});u.weeks=u.weeks.slice(-12);u.pending=u.plan.wk}
+u.plan=build(u,wk,u.prefs,miss);save()}
+function adaptPlan(){const wk=monday(),old=U.plan&&U.plan.wk===wk?U.plan:null,np=build(U,wk,U.prefs,old?old.miss:{});
+if(old){const ti=todayIdx();Object.keys(old.days).forEach(x=>{if(+x<ti)np.days[x]=old.days[x]});if(old.full)np.full=true}U.plan=np}
+function toggle(id,on){if(on){U.done[id]=Date.now();if(!U.paid[id]){U.paid[id]=1;U.stats.tasks++;addXP(15,'task done')}touch()}else delete U.done[id];
+const s=wkStats(U);if(s.p&&s.d===s.p&&!U.plan.full){U.plan.full=true;U.stats.weekFull++;toast('☀️ Perfect week: 100% of the plan done!','xp')}
+checkBadges();save();render()}
+/* ===== teacher snapshot & reports ===== */
+function snap(u){const sc=latest(u),w=wkStats(u),ov=overall(u);return{n:u.name,l:u.login,g:u.grade,t:u.teacher,d:ymd(),wk:monday(),xp:u.xp,st:u.streak,ov:ov==null?-1:ov,sc:D.map(d=>sc[d.k]==null?-1:sc[d.k]),w:[w.p,w.d],bd:D.map(d=>[w.by[d.k].p,w.by[d.k].d]),h:u.hist.slice(-20).map(h=>[Math.floor(h.t/864e5),DI[h.k],h.s]),la:u.last}}
+function snapWeek(u,e){const s=snap(u);s.wk=e.wk;s.w=[e.p,e.d];s.bd=e.bd||s.bd;return s}
+function hh(h){return h.map(a=>({t:a[0]*864e5+432e5,k:D[a[1]].k,s:a[2]}))}
+function reportText(s){const L=[];L.push('Applingo weekly report: '+s.n+' ('+s.g+' school group)');L.push('Week of '+s.wk+' · generated '+s.d);
+L.push('Overall: '+(s.ov<0?'no tests yet':s.ov+'/100 (about '+lvl(s.ov)+')')+' · Level '+LV(s.xp)+' · '+s.xp+' XP · streak '+s.st+' day(s)');
+L.push('Scores: '+D.map((d,i)=>d.n+' '+(s.sc[i]<0?'–':s.sc[i])).join(', '));
+L.push('Plan completion this week: '+(s.w[0]?Math.round(s.w[1]/s.w[0]*100):0)+'% ('+s.w[1]+' of '+s.w[0]+' min)');
+const weak=D.map((d,i)=>[d.n,s.sc[i]]).filter(x=>x[1]>=0).sort((a,b)=>a[1]-b[1]).slice(0,2).map(x=>x[0]+' ('+x[1]+')');
+if(weak.length)L.push('Needs most practice: '+weak.join(', '));return L.join('\n')}
+const code=s=>enc(JSON.stringify(s));
+function fullReport(s){return reportText(s)+'\n\nCode for the teacher dashboard (Import tab):\nAPPLINGO-REPORT:'+code(s)}
+function mailHref(s){return 'mailto:'+s.t+'?subject='+encodeURIComponent('Applingo weekly report: '+s.n)+'&body='+encodeURIComponent(fullReport(s))}
+const emOK=()=>CFG.emailjs.service&&CFG.emailjs.template&&CFG.emailjs.key;
+async function sendReport(s,auto){if(emOK()){try{const r=await fetch('https://api.emailjs.com/api/v1.0/email/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({service_id:CFG.emailjs.service,template_id:CFG.emailjs.template,user_id:CFG.emailjs.key,template_params:{to_email:s.t,student_name:s.n,subject:'Applingo weekly report: '+s.n,message:fullReport(s)}})});if(!r.ok)throw 0;toast('Report sent to '+s.t,'xp');return true}catch(e){toast('Could not send automatically. Opening your email app instead.')}}
+if(!auto){location.href=mailHref(s);return true}return false}
+async function autoReport(){if(autoSent||!U||U.role!=='student'||!U.pending||!emOK())return;autoSent=true;const e=U.weeks[U.weeks.length-1];if(!e)return;if(await sendReport(snapWeek(U,e),true)){U.pending=null;save();render()}}
+/* ===== scoring engines (rule-based NLP, runs in the browser) ===== */
+const CONN=['and','but','because','however','although','firstly','secondly','finally','moreover','therefore','so','then','also','while','besides','example','instance','conclusion','addition','result','whereas','despite','unless','since','first','next','after','before','overall'];
+const SUB=['which','who','whom','whose','that','if','when','because','although','while','since','unless','whereas'];
+const words=t=>t.toLowerCase().match(/[a-z]+(?:['’][a-z]+)?/g)||[];
+function errs(t){const e=[];const add=(re,msg)=>{(t.match(re)||[]).forEach(m=>e.push([m.trim(),msg]))};
+add(/\b(he|she|it)\s+(don['’]?t|have|go|do|like|want|play|live|need|think|know|make|take)\b/gi,'Check the verb after he / she / it (add -s, or use doesn’t)');
+add(/\b(i|you|we|they)\s+(is|does)\b|\b(he|she|it)\s+are\b|\b(we|they|you)\s+was\b|\bi\s+(are|is)\b/gi,'Check am / is / are / was / were');
+add(/\bmore\s+(better|bigger|easier|faster|taller|cheaper|worse)\b/gi,'Do not use “more” with an -er word');
+add(/\ba\s+[aeio]\w*/gi,'Use “an” before a vowel sound');add(/\ban\s+[bcdfgjklmnpqrstvwxyz]\w*/gi,'Use “a” before a consonant sound');
+(t.match(/\b(\w+)\s+\1\b/gi)||[]).forEach(m=>{const w=m.split(/\s+/)[0].toLowerCase();if(w!=='that'&&w!=='had')e.push([m,'Repeated word'])});return e}
+const MS=['recieve','definately','seperate','becouse','freind','beleive','wich','thier','alot','tomorow','goverment','enviroment','intresting','diffrent','comming','writting','peple','beautifull','realy','wensday','buisness','sucess'];
+function mech(t){const e=[];(t.match(/(^|[\s(])i(?=[\s,.!?'’]|$)/g)||[]).forEach(()=>e.push(['i','Write “I” with a capital letter']));
+(t.match(/\b(dont|doesnt|cant|wont|didnt|isnt|arent|im|ive|youre|thats|wasnt)\b/gi)||[]).forEach(m=>e.push([m,'Add an apostrophe']));
+words(t).forEach(w=>{if(MS.indexOf(w)>=0)e.push([w,'Spelling']);});
+const ss=t.replace(/\s+/g,' ').trim().split(/[.!?]+\s+/);let caps=0;ss.forEach(s=>{if(/^[a-z]/.test(s))caps++;if(words(s).length>45)e.push([s.slice(0,30)+'…','Very long sentence: split it in two'])});
+if(caps)e.push([caps+' sentence(s)','Start every sentence with a capital letter']);if(t.trim()&&!/[.!?]["”']?$/.test(t.trim()))e.push(['end','Finish with a full stop']);return e}
+function essayScore(t,P){t=t.trim();const w=words(t),wc=w.length,L=P.l,paras=t.split(/\n\s*\n/).filter(x=>x.trim()).length||1,ns=Math.max(1,t.replace(/\s+/g,' ').split(/[.!?]+\s*/).filter(x=>x.trim()).length),uniq=new Set(w).size;
+const kw=P.kw.filter(k=>w.indexOf(k)>=0).length/P.kw.length;
+const task=Math.round(55*cl(wc/P.min,0,1)+25*cl(kw*2,0,1)+20*cl(paras/P.p,0,1));
+const cn=new Set(w.filter(x=>CONN.indexOf(x)>=0)).size,avg=wc/ns;
+const coh=Math.round(45*cl(cn/(L+1),0,1)+30*cl(paras/P.p,0,1)+25*(avg>=6&&avg<=25?1:avg>3?.5:.2));
+const gui=uniq/Math.sqrt(Math.max(1,wc)),lw=w.filter(x=>x.length>=7).length/Math.max(1,wc);
+const voc=Math.round(55*cl(gui/(3.5+L*.9),0,1)+45*cl(lw/(.04+.025*L),0,1));
+const E=errs(t),M=mech(t),per=x=>x*100/Math.max(wc,30),sub=w.filter(x=>SUB.indexOf(x)>=0).length;
+const gr=Math.round(cl(80*(1-per(E.length)/12)+20*cl(sub/(ns*.6),0,1),0,100)),me=Math.round(cl(100-per(M.length)*9,0,100));
+const crit=[
+{n:'Task & content',s:task,w:.25,tip:'Write at least '+P.min+' words in '+P.p+' paragraph(s) and answer every part of the question.'},
+{n:'Organisation & links',s:coh,w:.2,tip:'Link ideas with however, because, for example, in conclusion. Use clear paragraphs.'},
+{n:'Vocabulary',s:voc,w:.2,tip:'Use more precise and varied words. Avoid repeating the same word.'},
+{n:'Grammar & range',s:gr,w:.2,tip:'Check verb forms. Try longer sentences with which, although, if, when.'},
+{n:'Spelling & punctuation',s:me,w:.15,tip:'Check capital letters, apostrophes, full stops and spelling.'}];
+let total=Math.round(crit.reduce((a,c)=>a+c.s*c.w,0));if(wc<15)total=Math.min(total,wc*2);if(wc>20&&uniq/wc<.3)total=Math.round(total*.6);
+const seen={},issues=[];E.concat(M).forEach(x=>{if(!seen[x[1]]&&issues.length<6){seen[x[1]]=1;issues.push(x)}});
+return{total:cl(total,0,100),crit,issues,wc}}
+function spScore(t,secs,conf,P){const w=words(t),wc=w.length,wpm=secs>0?wc/(secs/60):0;
+const pace=wpm<40?wpm/40*50:wpm<80?50+(wpm-40)/40*45:wpm<=170?100:90,flu=Math.round(.7*pace+30*cl(secs/20,0,1));
+const gui=new Set(w).size/Math.sqrt(Math.max(1,wc)),lw=w.filter(x=>x.length>=7).length/Math.max(1,wc),voc=Math.round(55*cl(gui/6,0,1)+45*cl(lw/.07,0,1));
+const cn=new Set(w.filter(x=>CONN.indexOf(x)>=0)).size,sub=w.filter(x=>SUB.indexOf(x)>=0).length,E=errs(t);
+const gr=Math.round(cl(45*cl(cn/4,0,1)+25*cl(sub/3,0,1)+30*(1-cl(E.length/3,0,1)),0,100));
+const kw=P.kw.filter(k=>w.indexOf(k)>=0).length/P.kw.length,con=Math.round(70*cl(wc/60,0,1)+30*cl(kw*2,0,1));
+const crit=[{n:'Fluency & pace',s:flu,w:.25,tip:'Speak for 30–40 seconds at a steady pace (about 90–150 words a minute).'},
+{n:'Vocabulary',s:voc,w:.2,tip:'Use more varied and specific words.'},{n:'Grammar & connectors',s:gr,w:.2,tip:'Join ideas with because, but, however, so, then.'},
+{n:'Content',s:con,w:.2,tip:'Answer every part of the question and give reasons or examples.'}];
+if(conf!=null)crit.push({n:'Clarity (speech recognition)',s:Math.round(cl((conf-.5)/.45,0,1)*100),w:.15,tip:'Speak clearly and a little slower so the words are easy to recognise.'});
+return crit}
+const wavg=c=>{const sw=c.reduce((a,x)=>a+x.w,0);return Math.round(c.reduce((a,x)=>a+x.s*x.w,0)/sw)};
+/* ===== audio for listening (works on phones, tablets and desktops) ===== */
+let VO=[],cur_audio=null;
+function loadV(){try{VO=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang))}catch(e){}}
+try{loadV();speechSynthesis.onvoiceschanged=loadV}catch(e){}
+function vs(v){const n=v.name;let x=0;if(/natural|neural|online/i.test(n))x+=6;if(/google (uk|us)/i.test(n))x+=4;if(/aria|jenny|guy|libby|ryan|sonia|samantha|daniel|serena|karen|moira|tessa|siri/i.test(n))x+=3;if(/en-gb/i.test(v.lang))x+=1;return x}
+function pickV(g){const l=VO.slice().sort((a,b)=>vs(b)-vs(a)),f=g==='m'?/\bmale\b|guy|ryan|daniel|george|david|mark|alex/i:/female|aria|jenny|libby|sonia|samantha|serena|karen|moira|tessa|zira|susan/i;
+const h=l.filter(v=>f.test(v.name)&&!(g==='m'&&/female/i.test(v.name)));return h[0]||l[g==='m'?Math.min(1,l.length-1):0]||null}
+function unlockTTS(){try{const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u)}catch(e){}}
+function stopTTS(){try{speechSynthesis.cancel()}catch(e){}try{if(cur_audio)cur_audio.pause()}catch(e){}}
+function ttsSay(text,fail){if(!('speechSynthesis' in window)){fail();return}
+try{const ss=speechSynthesis;ss.cancel();loadV();const parts=[];(text.indexOf('A:')===0?text.split(/\s(?=[AB]:)/):[text]).forEach(p=>{const g=/^B:/.test(p)?'m':'f',c=p.replace(/^[AB]:\s*/,'');(c.match(/[^.!?]+[.!?]*/g)||[c]).forEach(s=>{s=s.trim();if(s)parts.push([s,g])})});
+let started=false;parts.forEach(([s,g])=>{const u=new SpeechSynthesisUtterance(s),v=pickV(g);if(v){u.voice=v;u.lang=v.lang}else u.lang='en-GB';u.rate=.9;u.onstart=()=>{started=true};ss.speak(u)});
+setTimeout(()=>{if(!started)fail()},2500)}catch(e){fail()}}
+function probe(q){if(q.src!==undefined)return;q.src=null;if(!window.fetch||location.protocol==='file:')return;const ex=['mp3','m4a','wav'];let i=0;
+(function nx(){if(i>=ex.length)return;const u='audio/'+q.id+'.'+ex[i++];fetch(u,{method:'HEAD'}).then(r=>{if(r.ok&&/audio|octet/i.test(r.headers.get('content-type')||''))q.src=u;else nx()}).catch(nx)})()}
+function playItem(q,fail){stopTTS();if(q.src){try{const a=new Audio(q.src);cur_audio=a;const p=a.play();if(p&&p.catch)p.catch(()=>ttsSay(q.x,fail));return}catch(e){}}ttsSay(q.x,fail)}
+/* ===== test engine ===== */
+function pickItem(k){const t=TS.lvl;for(let o=0;o<5;o++){const L=o?[t-o,t+o]:[t];for(let j=0;j<L.length;j++){let c=B[k].filter(x=>x.l===L[j]&&TS.used.indexOf(x)<0);
+if(c.length){const ut=TS.used.map(x=>x.t||'mc'),nf=c.filter(x=>ut.indexOf(x.t||'mc')<0);if(nf.length)c=nf;return c[Math.floor(Math.random()*c.length)]}}}}
+function essayPick(){const S=latest(U),a=[S.grammar,S.vocab].filter(x=>x!=null);if(!a.length)return ESS[1];const m=a.reduce((x,y)=>x+y,0)/a.length;return ESS[m<25?0:m<45?1:m<65?2:m<82?3:4]}
+function startTest(k,queue){unlockTTS();const d=DK[k];TS={k,queue:queue||[],full:!!queue,i:0,lvl:2,used:[],log:[],sp:[],pi:1,mode:'mc',plays:0,shown:false,sel:null};
+if(d.kind==='write'){TS.mode='write';TS.P=essayPick();TS.text=''}else if(d.kind==='speak')TS.mode='speak';else{nextQ(true);return}go('test')}
+function nextQ(first){TS.cur=pickItem(TS.k);TS.used.push(TS.cur);TS.plays=0;TS.shown=false;TS.sel=null;if(TS.k==='listening')probe(TS.cur);first?go('test'):(render(),window.scrollTo(0,0))}
+function qnext(){stopTTS();const q=TS.cur,r=TS.ev();TS.log.push({it:q,ok:r.ok,pt:r.pt,ct:r.ct,shown:TS.shown});TS.lvl=r.ok?Math.min(5,q.l+1):Math.max(1,q.l-1);TS.i++;if(TS.i>=N)finishMC();else nextQ()}
+function finishMC(){const k=TS.k,L=TS.log,ls=L.map(e=>e.it.l),est=(ls.reduce((a,b)=>a+b,0)+TS.lvl)/(ls.length+1);let s=cl(Math.round((est-1.5)/2.7*100),0,100);
+if(k==='listening'){const sh=L.filter(e=>e.shown).length;s=Math.round(s*(1-.5*sh/L.length))}
+complete(k,s,{c:L.filter(e=>e.ok).length,n:L.length,mist:L.filter(e=>!e.ok).map(e=>({q:e.it.q,pt:e.pt,ct:e.ct})),shown:L.some(e=>e.shown)})}
+function complete(k,s,det){const prev=latest(U)[k];U.hist.push({t:Date.now(),k,s,c:det.c==null?0:det.c,n:det.n==null?0:det.n});U.hist=U.hist.slice(-400);
+let xp=40+(det.n?8*det.c:Math.round(s/2));if(det.n&&det.c===det.n&&det.n>=5)U.stats.perfect++;
+U.det[k]={t:Date.now(),crit:det.crit||null,mist:det.mist||null,issues:det.issues||null};touch();addXP(xp,D[DI[k]].n+' completed');adaptPlan();checkBadges();save();
+TS.res={k,s,prev,xp,det};TS.mode='done';render();window.scrollTo(0,0)}
+/* ===== rendering helpers ===== */
+const ringV=(v,lab,sm)=>'<div class="ring'+(sm?' s':'')+'"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="g"><stop offset="0" stop-color="#8F74FF"/><stop offset="1" stop-color="#2DD4E0"/></linearGradient></defs><circle class="t" cx="100" cy="100" r="90"/><circle class="v" id="rv" data-v="'+v+'" cx="100" cy="100" r="90"/></svg><div><b id="ov">'+v+'</b><span>'+lab+'</span></div></div>';
+function animRing(){const rv=$('#rv'),ov=$('#ov');if(!rv)return;const v=+rv.dataset.v;ov.textContent='0';setTimeout(()=>{rv.style.strokeDashoffset=565*(1-v/100);const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1200);ov.textContent=Math.round(v*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)},60)}
+function radarV(sc){const c=150,R=105,n=D.length,pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/n;return[c+r*Math.cos(a),c+r*Math.sin(a)]};let g='';
+[.25,.5,.75,1].forEach(f=>{g+='<polygon points="'+D.map((d,i)=>pt(i,R*f).map(x=>x.toFixed(1)).join(',')).join(' ')+'" fill="none" stroke="var(--line)"/>'});
+const lb=D.map((d,i)=>{const p=pt(i,128);return'<text x="'+p[0].toFixed(1)+'" y="'+(p[1]+4).toFixed(1)+'" text-anchor="middle" font-size="11" font-weight="600" fill="var(--muted)">'+d.s+'</text>'}).join('');
+const pts=D.map((d,i)=>pt(i,R*(sc[i]<0?0:sc[i])/100));
+return'<svg class="radar" viewBox="-40 -10 380 320" role="img" aria-label="Score radar">'+g+lb+'<polygon class="d" points="'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')+'" fill="rgba(108,71,255,.3)" stroke="var(--a)" stroke-width="2.5" stroke-linejoin="round"/>'+pts.map(p=>'<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="4" fill="var(--b)"/>').join('')+'</svg>'}
+function chart(pts,labs){if(!pts.length)return'<p class="sm muted">No results yet. Take a test to start your history.</p>';const W=600,H=190,P=30,x=i=>pts.length===1?W/2:P+i*(W-2*P)/(pts.length-1),y=v=>H-P-(v/100)*(H-2*P);let g='';
+[0,50,100].forEach(v=>{g+='<line x1="'+P+'" x2="'+(W-P)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--line)"/><text x="2" y="'+(y(v)+4)+'" font-size="11" fill="var(--muted)">'+v+'</text>'});
+return'<svg class="chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Score history">'+g+'<polyline points="'+pts.map((v,i)=>x(i).toFixed(1)+','+y(v).toFixed(1)).join(' ')+'" fill="none" stroke="var(--a)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>'+pts.map((v,i)=>'<circle cx="'+x(i).toFixed(1)+'" cy="'+y(v).toFixed(1)+'" r="4.5" fill="var(--b)"><title>'+esc(labs[i]||'')+': '+v+'</title></circle>').join('')+'</svg>'}
+function series(h){const l={},pts=[],labs=[];h.forEach(e=>{l[e.k]=e.s;const v=Object.values(l);pts.push(Math.round(v.reduce((a,b)=>a+b,0)/v.length));labs.push(new Date(e.t).toLocaleDateString())});return{pts,labs}}
+const dots=n=>'<span class="dots">'+[1,2,3,4,5].map(i=>'<i class="'+(i<=n?'on':'')+'"></i>').join('')+'</span>';
+const critV=c=>'<div class="crit">'+c.map(x=>'<div class="r"><div><span>'+esc(x.n)+'</span><span>'+x.s+'/100</span></div><div class="bar"><i style="width:'+x.s+'%"></i></div>'+(x.s<65?'<div class="tip">Tip: '+esc(x.tip)+'</div>':'')+'</div>').join('')+'</div>';
+/* ===== router ===== */
+function go(n,o){if(TS&&TS.mode!=='done'&&V.n==='test'&&n!=='test'){stopTTS();stopRec(true)}if(n!=='test'&&TS&&TS.mode==='done'){}V=Object.assign({n},o||{});render();window.scrollTo(0,0)}
+function hdr(){const nav=!U?[['home','Home'],['about','About']]:U.role==='teacher'?[['home','My class'],['about','About']]:[['home','Home'],['plan','Plan'],['prog','Progress'],['badges','Badges'],['about','About']];
+const cur=V.n==='test'||V.n==='td'?'home':V.n;
+$('#hdr').innerHTML='<button class="brand" data-a="nav" data-v="home" aria-label="Applingo home"><span class="logo">✦</span>Applingo</button><nav class="nav" aria-label="Main">'+nav.map(x=>'<button data-a="nav" data-v="'+x[0]+'" class="'+(cur===x[0]?'on':'')+'"'+(cur===x[0]?' aria-current="page"':'')+'>'+x[1]+'</button>').join('')+'</nav>'+
+'<div class="uchip">'+(U?(U.role==='student'?'<span><b>Lv '+LV(U.xp)+'</b> · 🔥 '+U.streak+' · '+esc(U.name)+'</span>':'<span>Teacher · '+esc(U.name)+'</span>')+'<button class="sbtn" data-a="logout">Log out</button>':'')+'<button class="sbtn" data-a="theme" aria-label="Switch light or dark theme">◐</button></div>'}
+function render(){AFTER=null;hdr();let h;
+if(!U)h=V.n==='about'?aboutV():pubV();
+else if(U.role==='teacher')h=V.n==='td'?tdV():V.n==='about'?aboutV():tV();
+else{ensurePlan(U);h=V.n==='test'&&TS?testV():V.n==='plan'?planV():V.n==='prog'?progV():V.n==='badges'?badgeV():V.n==='about'?aboutV():dashV()}
+$('#app').innerHTML=h;if(AFTER)AFTER()}
+/* ===== public: landing + auth ===== */
+function pubV(){const t=V.tab||'student';
+const form=t==='login'?'<form data-f="login" class="form" autocomplete="on"><label class="f">Username or email<input class="inp" name="id" required autocomplete="username" autocapitalize="off" spellcheck="false"></label><label class="f">Password<input class="inp" name="pw" type="password" required autocomplete="current-password"></label><div style="grid-column:1/-1" class="row"><button class="pri" type="submit">Log in</button></div></form>':
+t==='teacher'?'<form data-f="reg-teacher" class="form" autocomplete="on"><label class="f">Your name<input class="inp" name="name" required maxlength="40" autocomplete="name"></label><label class="f">Email (students enter this email to link to you)<input class="inp" name="email" type="email" required autocomplete="email" autocapitalize="off"></label><label class="f">Password (min 6 characters)<input class="inp" name="pw" type="password" required minlength="6" autocomplete="new-password"></label><div style="grid-column:1/-1" class="row"><button class="pri" type="submit">Create teacher account</button></div></form>':
+'<form data-f="reg-student" class="form" autocomplete="on"><label class="f">Your name<input class="inp" name="name" required maxlength="40" autocomplete="name"></label><label class="f">Username<input class="inp" name="login" required minlength="3" maxlength="30" autocomplete="username" autocapitalize="off" spellcheck="false"></label><label class="f">Password (min 6 characters)<input class="inp" name="pw" type="password" required minlength="6" autocomplete="new-password"></label><label class="f">Your grade group<select name="grade"><option>Elementary</option><option>Middle</option><option selected>High</option></select></label><label class="f" style="grid-column:1/-1">Teacher’s email (weekly reports go to this teacher)<input class="inp" name="teacher" type="email" required placeholder="teacher@gmail.com" autocapitalize="off"></label><div style="grid-column:1/-1" class="row"><button class="pri" type="submit">Create student account</button></div></form>';
+return'<div class="card hero"><h1>Learn English.<br><span class="grad">Level up every week.</span></h1><p class="muted">Applingo tests eight English skills with an adaptive test, scores your essays and speaking by clear criteria, and builds a weekly study plan with real apps that changes as you improve. Earn XP, keep your streak and let your teacher follow your progress.</p>'+
+'<div class="depts">'+D.map((d,i)=>'<div class="dc" style="'+hs(d)+';animation:in .5s '+(i*.06)+'s both"><div class="ic">'+d.ic+'</div><h3>'+d.n+'</h3><span class="sm muted">'+GROUPS[d.g]+'</span></div>').join('')+'</div>'+
+'<div class="stats"><div><b>8</b><span class="sm muted">departments</span></div><div><b>8</b><span class="sm muted">questions each</span></div><div><b>0–100</b><span class="sm muted">independent scores</span></div></div></div>'+
+'<div class="card"><div class="tabsx" role="tablist"><button data-a="tab" data-v="student" class="'+(t==='student'?'on':'')+'" role="tab">Student sign up</button><button data-a="tab" data-v="teacher" class="'+(t==='teacher'?'on':'')+'" role="tab">Teacher sign up</button><button data-a="tab" data-v="login" class="'+(t==='login'?'on':'')+'" role="tab">Log in</button></div>'+form+'<p class="sm bad" id="err" role="alert"></p>'+
+'<p class="sm muted">Accounts live in this browser. Your teacher gets reports only when you send them. Just exploring? Try a demo:</p><div class="row"><button data-a="demoS">Demo student</button><button data-a="demoT">Demo teacher</button></div></div>'}
+const FORM={
+async login(fd){const id=String(fd.get('id')||'').trim().toLowerCase(),pw=String(fd.get('pw')||''),u=DB.users[id];if(!u)return setErr('No account with this name on this device. Sign up first (accounts are stored in this browser).');
+if(await hashPw(pw,u.pass.s)!==u.pass.h)return setErr('Wrong password.');enter(u)},
+async 'reg-student'(fd){const name=String(fd.get('name')||'').trim(),login=String(fd.get('login')||'').trim().toLowerCase(),pw=String(fd.get('pw')||''),teacher=String(fd.get('teacher')||'').trim().toLowerCase();
+if(name.length<2)return setErr('Please enter your name.');if(!/^[a-z0-9._-]{3,30}$/.test(login))return setErr('Username: 3–30 letters, numbers, dot, dash or underscore.');if(pw.length<6)return setErr('Password needs at least 6 characters.');
+if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(teacher))return setErr('Please enter your teacher’s email address.');if(DB.users[login])return setErr('This username is taken. Try another one.');
+const salt=rnd(),u=newStudent({name,login,grade:String(fd.get('grade')),teacher,pass:{s:salt,h:await hashPw(pw,salt)}});DB.users[login]=u;enter(u)},
+async 'reg-teacher'(fd){const name=String(fd.get('name')||'').trim(),login=String(fd.get('email')||'').trim().toLowerCase(),pw=String(fd.get('pw')||'');
+if(name.length<2)return setErr('Please enter your name.');if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(login))return setErr('Please enter a valid email.');if(pw.length<6)return setErr('Password needs at least 6 characters.');if(DB.users[login])return setErr('An account with this email already exists. Log in instead.');
+const salt=rnd(),u={role:'teacher',name,login,pass:{s:salt,h:await hashPw(pw,salt)},imports:{}};DB.users[login]=u;enter(u)}};
+function setErr(m){const e=$('#err');if(e)e.textContent=m}
+function enter(u){DB.session=u.login;U=u;TS=null;autoSent=false;if(u.role==='student'){ensurePlan(u);checkBadges()}save();go('home');if(u.role==='student')autoReport()}
+/* ===== student: dashboard ===== */
+function tile(d){const S=latest(U)[d.k],pv=prevS(U,d.k),dl=S!=null&&pv!=null?(S-pv>=0?' · +':' · ')+(S-pv)+' vs before':'';
+return'<div class="tile" style="'+hs(d)+'"><div class="row"><div class="ic">'+d.ic+'</div><div class="sc">'+(S==null?'–':S)+'</div></div><h3>'+d.n+'</h3><div class="bar"><i style="width:'+(S||0)+'%"></i></div><span class="sm muted">'+(S==null?'Not tested yet':'≈ '+lvl(S)+dl)+'</span><button class="sbtn'+(S==null?' pri':'')+'" data-a="start" data-k="'+d.k+'">'+(S==null?'Take test':'Retake test')+'</button></div>'}
+function taskRow(b,past){const dn=!!U.done[b.id];return'<label class="tk'+(dn?' d':'')+'"><input type="checkbox" data-c="task" data-id="'+esc(b.id)+'"'+(dn?' checked':'')+'><span><b>'+b.m+' min</b> · '+esc(tt(b))+(past&&!dn?' <span class="pill bad">missed</span>':'')+'</span></label>'}
+function dashV(){const ov=overall(U),S=latest(U),ws=wkStats(U),ti=todayIdx(),bl=U.plan.days[ti],tested=Object.keys(S).length;
+const untested=D.filter(d=>S[d.k]==null),weak=D.filter(d=>S[d.k]!=null).sort((a,b)=>S[a.k]-S[b.k])[0];
+const next=untested.length?untested[0]:weak;
+let pend='';if(U.pending){const e=U.weeks[U.weeks.length-1];pend='<div class="banner"><div><b>Last week’s report is ready</b><p class="sm muted">Week of '+esc(U.pending)+' · '+(e?e.pc:0)+'% of the plan completed. Send it to '+esc(U.teacher)+'.</p></div><div class="row"><button class="pri sbtn" data-a="sendPending">Send to teacher</button><button class="sbtn" data-a="dismissPending">Dismiss</button></div></div>'}
+return pend+'<div class="card"><div class="top">'+(ov==null?'<div class="ring"><svg viewBox="0 0 200 200" aria-hidden="true"><circle class="t" cx="100" cy="100" r="90"/></svg><div><b>–</b><span>no score yet</span></div></div>':ringV(ov,'overall'))+
+'<div style="display:grid;gap:12px"><h2>Hi, <span class="grad">'+esc(U.name.split(' ')[0])+'</span>!</h2><div class="row"><span class="pill">Level '+LV(U.xp)+'</span><span class="pill">🔥 '+U.streak+'-day streak</span><span class="pill">'+U.xp+' XP</span><span class="pill">'+Object.keys(U.badges).length+'/'+BG.length+' badges</span></div>'+
+'<div><div class="xp" role="progressbar" aria-valuenow="'+(U.xp%150)+'" aria-valuemin="0" aria-valuemax="150" aria-label="XP to next level"><i style="width:'+(U.xp%150)/150*100+'%"></i></div><span class="sm muted">'+(150-U.xp%150)+' XP to level '+(LV(U.xp)+1)+'</span></div>'+
+'<div class="row"><button class="pri" data-a="full">Full check · 8 departments</button>'+(next?'<button data-a="start" data-k="'+next.k+'">'+(untested.length?'Start with ':'Practise ')+next.n+'</button>':'')+'</div>'+(tested&&tested<D.length?'<p class="sm muted">Each department is scored on its own, so you can take them one at a time.</p>':'')+'</div></div></div>'+
+'<div class="card"><div class="row" style="justify-content:space-between"><h2>Today’s plan</h2><span class="sm muted">'+DN[ti]+' · week '+ws.pc+'% done</span></div><div class="meter" role="progressbar" aria-valuenow="'+ws.pc+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+ws.pc+'%"></i></div>'+
+(bl?bl.map(b=>taskRow(b,false)).join(''):'<p class="muted">Rest day. Enjoy it, your streak is safe.</p>')+'<div class="row"><button class="sbtn" data-a="nav" data-v="plan">Open the whole week</button></div></div>'+
+GROUPS.map((g,gi)=>'<div class="card"><h2>'+g+'</h2><div class="g2">'+D.filter(d=>d.g===gi).map(tile).join('')+'</div></div>').join('')}
+/* ===== student: plan ===== */
+function planV(){const p=U.plan,ws=wkStats(U),ti=todayIdx(),sel=(id,a,v)=>'<select id="'+id+'" data-c="pf" aria-label="'+id+'">'+a.map(x=>'<option'+(x===v?' selected':'')+'>'+x+'</option>').join('')+'</select>';
+return'<div class="card"><h2>Your adaptive weekly plan</h2><p class="muted">Weaker departments get more minutes. Skipped tasks and new test results change next week’s plan automatically. The plan is rebuilt each Monday and after every test.</p>'+
+'<div class="form"><label class="f">Minutes per day'+sel('mins',[15,30,45,60],U.prefs.mins)+'</label><label class="f">Study days per week'+sel('dpw',[3,4,5,6,7],U.prefs.dpw)+'</label></div>'+
+(p.notes.length?'<ul class="l sm">'+p.notes.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul>':'')+
+'<div><div class="meter"><i style="width:'+ws.pc+'%"></i></div><p class="sm muted">'+ws.d+' of '+ws.p+' minutes done this week ('+ws.pc+'%)</p></div>'+
+'<div class="days">'+DN.map((n,i)=>{const bl=p.days[i];if(!bl)return'<div class="day rest"><h3>'+n+'<span>rest</span></h3></div>';return'<div class="day"><h3>'+n+(i===ti?' · today':'')+'<span>'+bl.reduce((a,b)=>a+b.m,0)+' min</span></h3>'+bl.map(b=>taskRow(b,i<ti)).join('')+'</div>'}).join('')+'</div>'+
+'<div class="row"><button class="pri" data-a="sendNow">Email this week’s report to '+esc(U.teacher)+'</button><button data-a="copyRep">Copy report</button></div><p class="sm muted">'+(emOK()?'Reports are sent directly by email.':'This opens your email app with the report ready to send. Teachers can paste the code from the email into their dashboard.')+'</p></div>'+
+'<div class="card"><h2>This week by department</h2><div class="crit">'+D.map(d=>{const b=ws.by[d.k],pc=b.p?Math.round(b.d/b.p*100):0;return'<div class="r" style="'+hs(d)+'"><div><span>'+d.n+'</span><span>'+b.d+' / '+b.p+' min</span></div><div class="bar"><i style="width:'+pc+'%"></i></div></div>'}).join('')+'</div></div>'+
+(U.weeks.length?'<div class="card"><h2>Past weeks</h2><div class="tw"><table class="tbl"><thead><tr><th>Week of</th><th>Completed</th><th>Minutes</th><th>Overall score</th></tr></thead><tbody>'+U.weeks.slice().reverse().map(w=>'<tr><td>'+esc(w.wk)+'</td><td>'+w.pc+'%</td><td>'+w.d+' / '+w.p+'</td><td>'+(w.ov==null?'–':w.ov)+'</td></tr>').join('')+'</tbody></table></div></div>':'')}
+/* ===== student: progress ===== */
+function progV(){const sc=D.map(d=>latest(U)[d.k]==null?-1:latest(U)[d.k]),ov=overall(U),se=series(U.hist);const k=V.k||D.find(d=>latest(U)[d.k]!=null)&&D.find(d=>latest(U)[d.k]!=null).k||'grammar';
+if(ov!=null)AFTER=animRing;
+const d=DK[k],s=latest(U)[k],att=U.hist.filter(h=>h.k===k),dt=U.det[k];
+let pn='<div class="pn" style="'+hs(d)+'"><div class="row" style="gap:20px"><div class="big">'+(s==null?'–':s)+'<span class="sm muted" style="font:500 1rem var(--body)"> / 100</span></div><div style="flex:1;min-width:160px"><div class="bar"><i style="width:'+(s||0)+'%"></i></div></div></div>';
+if(s==null)pn+='<p class="muted">You have not taken the '+d.n+' test yet.</p><button class="pri" data-a="start" data-k="'+k+'">Take the '+d.n+' test</button>';
+else{const sr=series(att.map(h=>({t:h.t,k:'x',s:h.s})));pn+='<p class="sm muted">'+att.length+' attempt(s) · latest: '+new Date(att[att.length-1].t).toLocaleDateString()+'</p>'+chart(sr.pts,sr.labs);
+if(dt&&dt.crit)pn+=critV(dt.crit);if(dt&&dt.issues&&dt.issues.length)pn+='<details><summary style="cursor:pointer;font-weight:600">Language points to fix</summary><ul class="l sm" style="margin-top:10px">'+dt.issues.map(x=>'<li><b>'+esc(x[0])+'</b>: '+esc(x[1])+'</li>').join('')+'</ul></details>';
+if(dt&&dt.mist&&dt.mist.length)pn+='<details><summary style="cursor:pointer;font-weight:600">Review mistakes from the last test</summary><ol class="mis" style="margin-top:10px">'+dt.mist.map(e=>'<li>'+esc(e.q)+'<br><span class="bad">You: '+esc(e.pt)+'</span> · <span class="ok">Correct: '+esc(e.ct)+'</span></li>').join('')+'</ol></details>';
+pn+='<div class="reco"><span class="app">'+esc(d.app)+'</span><p class="sm">'+esc(d.why)+'</p><p class="sm muted">'+esc(d.task)+'</p></div>'}
+pn+='</div>';
+return'<div class="card"><div class="top">'+(ov==null?'<p class="muted">Take your first test to see your profile.</p>':ringV(ov,'overall'))+'<div style="display:grid;gap:10px"><h2>Your <span class="grad">score profile</span></h2>'+(ov==null?'':radarV(sc))+'</div></div>'+(ov!=null?'<p class="sm muted">Approximate level: <b>'+lvl(ov)+'</b>. This is an estimate, not an official certificate.</p>':'')+'</div>'+
+'<div class="card"><h2>Progress over time</h2>'+chart(se.pts,se.labs)+'<p class="sm muted">Overall score after each test. Retake the check after 4 weeks and compare.</p></div>'+
+'<div class="card"><h2>Departments</h2><div class="tabs" role="tablist">'+D.map(x=>'<button class="tab'+(x.k===k?' on':'')+'" role="tab" data-a="ptab" data-k="'+x.k+'" style="'+hs(x)+'"><span class="ic">'+x.ic+'</span>'+x.n+' <b>'+(latest(U)[x.k]==null?'–':latest(U)[x.k])+'</b></button>').join('')+'</div>'+pn+'</div>'+
+(U.essays.length?'<div class="card"><h2>Your latest essay</h2><p class="sm muted">'+esc(U.essays[U.essays.length-1].q)+'</p><p style="white-space:pre-wrap">'+esc(U.essays[U.essays.length-1].text)+'</p></div>':'')}
+/* ===== student: badges ===== */
+function badgeV(){return'<div class="card"><h2>Level '+LV(U.xp)+' · '+U.xp+' XP</h2><div class="xp"><i style="width:'+(U.xp%150)/150*100+'%"></i></div><p class="sm muted">Earn XP: +8 per correct answer, +40 per finished test, +15 per plan task, +25 per badge. A new level every 150 XP. Study every day to grow your streak (now '+U.streak+').</p></div>'+
+'<div class="card"><h2>Badges · '+Object.keys(U.badges).length+' / '+BG.length+'</h2><div class="badges">'+BG.map(b=>'<div class="bd'+(U.badges[b.id]?'':' lock')+'"><div class="e">'+b.e+'</div><b>'+b.n+'</b><span class="sm muted">'+b.d+'</span>'+(U.badges[b.id]?'<span class="pill ok">'+esc(U.badges[b.id])+'</span>':'')+'</div>').join('')+'</div></div>'}
+/* ===== test screens ===== */
+function testV(){const d=DK[TS.k];if(TS.mode==='done'){AFTER=animRing;return doneV()}
+const top='<div style="'+hs(d)+';display:contents"><div class="card" style="'+hs(d)+'">';
+if(TS.mode==='write')return writeV(d,top);if(TS.mode==='speak')return speakV(d,top);return mcV(d,top)}
+function mcV(d,top){const q=TS.cur,pr=Math.round(TS.i/N*100);
+let h=top+'<div class="meter"><i style="width:'+pr+'%"></i></div><div class="qh"><span><b style="color:hsl(var(--h) 80% 58%);letter-spacing:.08em;text-transform:uppercase">'+d.n+'</b> · question '+(TS.i+1)+' of '+N+(TS.full?' · full check':'')+'</span><span>Difficulty'+dots(q.l)+'</span></div>';
+if(q.x&&d.k!=='listening')h+='<div class="pass">'+esc(q.x)+'</div>';
+if(d.k==='listening')h+='<div class="row"><button id="play">▶ Play audio</button><span class="sm muted" id="pc"></span><button id="show">Show text</button></div><div class="tx" id="tx" hidden>“'+esc(q.x)+'”</div><p class="sm muted" id="aud" role="status">No sound? Check the volume and silent mode, or use “Show text” (this lowers the score a little).</p>';
+h+=qbody(q)+'<div class="row"><button class="pri" id="next" data-a="qnext" disabled>'+(TS.i===N-1?'Finish →':'Next →')+'</button><button data-a="exit">Exit test</button></div></div></div>';
+AFTER=()=>{bindQ(q,$('#next'));if(d.k==='listening'){const tx=$('#tx'),pc=$('#pc'),pl=$('#play'),au=$('#aud');const up=()=>{pc.textContent=(2-TS.plays)+' plays left';pl.disabled=TS.plays>=2};up();
+pl.onclick=()=>{TS.plays++;up();au.textContent='Playing…';playItem(q,()=>{tx.hidden=false;TS.shown=true;au.textContent='Audio is not available on this device, so the text is shown (score slightly reduced).'});setTimeout(()=>{au.textContent='Listen again if you need to.'},4000)};
+$('#show').onclick=()=>{tx.hidden=false;TS.shown=true}}};return h}
+function shuf(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function norm(s){return String(s).toLowerCase().replace(/[’'`]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim()}
+function qbody(q){const t=q.t||'mc';
+if(t==='gap')return'<fieldset><legend>'+esc(q.q)+'</legend><input class="inp" id="gp" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type your answer here" aria-label="Your answer"></fieldset>';
+if(t==='ord'){q.s=shuf(q.w);return'<fieldset><legend>'+esc(q.q)+'</legend><p class="sm muted">Tap the words in order. Tap a word again to remove it.</p><div class="chips" id="ans" aria-label="Your sentence"></div><div class="chips" id="pool" aria-label="Words"></div></fieldset>'}
+if(t==='mat'){q.m=shuf(q.p.map(p=>p[1]));return'<fieldset><legend>'+esc(q.q)+'</legend>'+q.p.map(p=>'<label class="mrow"><b>'+esc(p[0])+'</b><select><option value="">Choose…</option>'+q.m.map(m=>'<option>'+esc(m)+'</option>').join('')+'</select></label>').join('')+'</fieldset>'}
+return'<fieldset><legend>'+esc(q.q)+'</legend>'+q.o.map((o,k)=>'<label class="opt"><input type="radio" name="o" value="'+k+'"><span>'+esc(o)+'</span></label>').join('')+'</fieldset>'}
+function bindQ(q,nx){const t=q.t||'mc',en=v=>{nx.disabled=!v};
+if(t==='gap'){const g=$('#gp');g.oninput=()=>en(g.value.trim());TS.ev=()=>({ok:q.a.map(norm).indexOf(norm(g.value))>=0,pt:g.value,ct:q.a[0]})}
+else if(t==='ord'){const u=[],A=$('#ans'),P=$('#pool');const dr=()=>{A.innerHTML=u.map(i=>'<button type="button" class="chip on" data-i="'+i+'">'+esc(q.s[i])+'</button>').join('');P.innerHTML=q.s.map((w,i)=>u.indexOf(i)<0?'<button type="button" class="chip" data-i="'+i+'">'+esc(w)+'</button>':'').join('');en(u.length===q.s.length);
+document.querySelectorAll('#ans .chip,#pool .chip').forEach(b=>{b.onclick=()=>{const i=+b.dataset.i,k=u.indexOf(i);if(k<0)u.push(i);else u.splice(k,1);dr()}})};dr();
+TS.ev=()=>{const x=u.map(i=>q.s[i]).join(' ');return{ok:q.a.map(norm).indexOf(norm(x))>=0,pt:x,ct:q.a[0]}}}
+else if(t==='mat'){const S=document.querySelectorAll('#app select');S.forEach(e=>{e.onchange=()=>{let all=true;S.forEach(y=>{if(!y.value)all=false});en(all)}});
+TS.ev=()=>{let ok=true;const pt=[];S.forEach((e,i)=>{if(e.value!==q.p[i][1])ok=false;pt.push(q.p[i][0]+' = '+e.value)});return{ok,pt:pt.join('; '),ct:q.p.map(p=>p[0]+' = '+p[1]).join('; ')}}}
+else{document.querySelectorAll('input[name=o]').forEach(e=>{e.onchange=()=>{TS.sel=+e.value;en(1)}});TS.ev=()=>({ok:TS.sel===q.a,pt:q.o[TS.sel],ct:q.o[q.a]})}}
+/* writing */
+function writeV(d,top){const P=TS.P;
+AFTER=()=>{const ta=$('#essay'),wc=$('#wc'),bt=$('#esub');const up=()=>{TS.text=ta.value;const n=words(ta.value).length;wc.textContent=n+' words (aim for '+P.min+'+)';bt.disabled=n<15};ta.oninput=up;up()};
+return top+'<div class="qh"><span><b style="color:hsl(var(--h) 80% 58%);letter-spacing:.08em;text-transform:uppercase">Writing · essay</b>'+(TS.full?' · full check':'')+'</span><span>Difficulty'+dots(P.l)+'</span></div>'+
+'<h2>'+esc(P.q)+'</h2><label class="f">Prompt difficulty<select data-c="essayLvl">'+ESS.map(e=>'<option value="'+e.l+'"'+(e.l===P.l?' selected':'')+'>Level '+e.l+(e.l===1?' (easy)':e.l===5?' (hard)':'')+'</option>').join('')+'</select></label>'+
+'<textarea class="ta" id="essay" aria-label="Your essay" placeholder="Write your text here. Use '+P.p+' paragraph(s). Leave an empty line between paragraphs.">'+esc(TS.text||'')+'</textarea><div class="row"><span class="sm muted" id="wc" aria-live="polite"></span></div>'+
+'<p class="sm muted">You will get a score for 5 criteria: task & content, organisation, vocabulary, grammar & range, spelling & punctuation.</p><div class="row"><button class="pri" id="esub" data-a="essaySubmit" disabled>Submit essay →</button><button data-a="exit">Exit test</button></div></div></div>'}
+/* speaking */
+let mr,chunks,sr,tr,tick,secs,blobUrl,confs;
+function stopRec(quiet){try{clearInterval(tick)}catch(e){}try{if(sr){sr.onend=null;sr.stop()}}catch(e){}try{if(mr&&mr.state!=='inactive'){if(quiet)mr.onstop=null;mr.stop()}}catch(e){}try{if(mr&&mr.stream)mr.stream.getTracks().forEach(t=>t.stop())}catch(e){}}
+function speakV(d,top){const P=SPQ[TS.pi];TS.P=P;
+AFTER=bindSpeak;
+return top+'<div class="meter"><i style="width:'+Math.round(TS.sp.length/3*100)+'%"></i></div><div class="qh"><span><b style="color:hsl(var(--h) 80% 58%);letter-spacing:.08em;text-transform:uppercase">Speaking</b> · prompt '+(TS.sp.length+1)+' of 3'+(TS.full?' · full check':'')+'</span></div>'+
+'<div class="sp" style="display:grid;gap:14px;justify-items:center"><p class="q">'+esc(P.q)+'</p><p class="sm muted">Speak for 30–40 seconds. Tap the button to start and again to stop.</p><button class="mic" id="mic" aria-label="Record">●</button><div id="tm" class="sm muted" aria-live="polite">Ready</div><div id="rs" style="width:100%;display:grid;gap:12px;justify-items:center"></div>'+
+'<div class="row"><button class="sm" id="skip" style="min-height:40px">I can’t record, rate myself instead</button><button data-a="exit" class="sm" style="min-height:40px">Exit test</button></div></div></div></div>'}
+function bindSpeak(){const mic=$('#mic'),tm=$('#tm'),rs=$('#rs');let on=false;
+const manual=msg=>{rs.innerHTML=(msg?'<p class="sm muted">'+msg+'</p>':'')+'<p><b>How easily could you answer this?</b></p><div class="rate">'+['With a lot of help','Slowly','Mostly fluent','Easily'].map((l,i)=>'<button data-v="'+[22,45,70,92][i]+'">'+l+'</button>').join('')+'</div>';
+rs.querySelectorAll('button').forEach(b=>{b.onclick=()=>done(+b.dataset.v,'(self-rated)',[{n:'Self-assessment',s:+b.dataset.v,w:1,tip:''}])})};
+const done=(s,text,crit)=>{TS.sp.push({s,t:text,url:blobUrl,q:TS.P.q,crit});blobUrl=null;if(TS.sp.length<3){TS.pi=cl(TS.pi+(s>=70?1:s<45?-1:0),0,SPQ.length-1);render();window.scrollTo(0,0)}else finishSpeak()};
+$('#skip').onclick=()=>manual('');
+const fin=()=>{setTimeout(()=>{tm.textContent='Done';const t=(tr||'').trim();rs.innerHTML='<audio controls src="'+blobUrl+'"></audio>'+(t?'<p class="tx">“'+esc(t)+'”</p>':'')+'<div class="row"><button id="again">Record again</button>'+(t?'<button class="pri" id="sub">Submit answer →</button>':'')+'</div>';
+$('#again').onclick=()=>{render();window.scrollTo(0,0)};
+if(t){$('#sub').onclick=()=>{const cf=confs.length?confs.reduce((a,b)=>a+b,0)/confs.length:null,crit=spScore(t,secs,cf&&cf>0?cf:null,TS.P);done(wavg(crit),t,crit)}}
+else{const p=document.createElement('div');p.style.width='100%';rs.appendChild(p);p.innerHTML='<p class="sm muted">We couldn’t transcribe your voice in this browser, so please rate yourself.</p><div class="rate">'+['With a lot of help','Slowly','Mostly fluent','Easily'].map((l,i)=>'<button data-v="'+[22,45,70,92][i]+'">'+l+'</button>').join('')+'</div>';
+p.querySelectorAll('button').forEach(b=>{b.onclick=()=>done(+b.dataset.v,'(self-rated)',[{n:'Self-assessment',s:+b.dataset.v,w:1,tip:''}])})}},400)};
+mic.onclick=()=>{if(on){on=false;mic.classList.remove('on');mic.textContent='●';tm.textContent='Processing…';stopRec();return}
+if(!navigator.mediaDevices||!window.MediaRecorder){manual('Recording is not available here.');return}
+navigator.mediaDevices.getUserMedia({audio:true}).then(s=>{chunks=[];tr='';confs=[];mr=new MediaRecorder(s);mr.ondataavailable=e=>chunks.push(e.data);
+mr.onstop=()=>{s.getTracks().forEach(t=>t.stop());blobUrl=URL.createObjectURL(new Blob(chunks,{type:mr.mimeType}));fin()};mr.start();on=true;mic.classList.add('on');mic.textContent='■';rs.innerHTML='';secs=0;
+tick=setInterval(()=>{secs++;tm.textContent='Recording… '+secs+'s';if(secs>=45)mic.click()},1000);tm.textContent='Recording… 0s';
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(SR){try{sr=new SR();sr.lang='en-US';sr.continuous=true;sr.interimResults=false;sr.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++)if(e.results[i].isFinal){tr+=e.results[i][0].transcript+' ';confs.push(e.results[i][0].confidence||0)}};sr.onend=()=>{if(on)try{sr.start()}catch(x){}};sr.start()}catch(x){sr=null}}
+}).catch(()=>manual('Microphone access was blocked.'))}}
+function finishSpeak(){const names=[];TS.sp.forEach(a=>a.crit.forEach(c=>{if(names.indexOf(c.n)<0)names.push(c.n)}));
+const crit=names.map(n=>{const xs=[];TS.sp.forEach(a=>a.crit.forEach(c=>{if(c.n===n)xs.push(c)}));return{n,s:Math.round(xs.reduce((a,c)=>a+c.s,0)/xs.length),w:xs[0].w,tip:xs[0].tip}});
+complete('speaking',wavg(crit),{crit,sp:TS.sp.map(a=>({q:a.q,t:a.t,s:a.s}))})}
+function doneV(){const R=TS.res,d=DK[R.k],s=R.s,dt=R.det;
+let h='<div style="'+hs(d)+';display:contents"><div class="card" style="'+hs(d)+'"><div class="top">'+ringV(s,d.n)+'<div style="display:grid;gap:10px"><h2>'+d.n+' <span class="grad">result</span></h2><p>Approximate level: <b>'+lvl(s)+'</b>'+(R.prev!=null?' · '+(s-R.prev>=0?'+':'')+(s-R.prev)+' vs last time':'')+'</p><p class="sm muted">+'+R.xp+' XP earned. Your weekly plan was updated for this result.</p></div></div>';
+if(dt.n)h+='<p class="sm muted">'+dt.c+' of '+dt.n+' correct'+(dt.shown?' · you used “Show text”, so the score was reduced a little':'')+'</p>';
+if(dt.crit)h+=critV(dt.crit);
+if(R.k==='writing'&&dt.issues&&dt.issues.length)h+='<details open><summary style="cursor:pointer;font-weight:600">Language points to fix</summary><ul class="l sm" style="margin-top:10px">'+dt.issues.map(x=>'<li><b>'+esc(x[0])+'</b>: '+esc(x[1])+'</li>').join('')+'</ul></details>';
+if(R.k==='writing')h+='<p class="sm muted">Automatic feedback checks length, structure, linking words, vocabulary range and common errors. It cannot judge ideas, so ask your teacher to read the essay too.</p>';
+if(R.k==='speaking')h+=(dt.sp||[]).map((x,i)=>'<div class="sm"><b>Prompt '+(i+1)+':</b> '+esc(x.q)+'<br><span class="muted">Score '+x.s+' · '+esc((x.t||'').slice(0,200))+'</span></div>').join('');
+if(dt.mist&&dt.mist.length)h+='<details open><summary style="cursor:pointer;font-weight:600">Review mistakes</summary><ol class="mis" style="margin-top:10px">'+dt.mist.map(e=>'<li>'+esc(e.q)+'<br><span class="bad">You: '+esc(e.pt)+'</span> · <span class="ok">Correct: '+esc(e.ct)+'</span></li>').join('')+'</ol></details>';
+h+='<div class="reco"><span class="app">'+esc(d.app)+'</span><p class="sm">'+esc(d.why)+'</p><p class="sm muted">'+esc(d.task)+'</p></div><div class="row">';
+if(TS.queue.length)h+='<button class="pri" data-a="nextDept">Next: '+DK[TS.queue[0]].n+' →</button>';else h+='<button class="pri" data-a="nav" data-v="home">Back to dashboard</button><button data-a="nav" data-v="prog">View my profile</button>';
+h+='<button data-a="retake" data-k="'+R.k+'">Retake</button></div></div></div>';return h}
+/* ===== teacher ===== */
+function classList(T){const m={};Object.values(DB.users).forEach(u=>{if(u.role==='student'&&u.teacher===T.login){ensurePlan(u);m[u.login]=Object.assign(snap(u),{src:'live'})}});
+Object.keys(T.imports||{}).forEach(k=>{const s=T.imports[k];if(!m[k]||m[k].d<s.d)m[k]=Object.assign({},s,{src:'import'})});return Object.values(m).sort((a,b)=>a.n.localeCompare(b.n))}
+const pcOf=s=>s.w[0]?Math.round(s.w[1]/s.w[0]*100):0;
+const daysAgo=s=>{if(!s.la)return 99;const a=new Date(s.la+'T12:00:00'),b=new Date();return Math.floor((b-a)/864e5)};
+const attn=s=>s.ov<0||s.ov<40||pcOf(s)<30||daysAgo(s)>7;
+function tV(){const L=classList(U),tested=L.filter(s=>s.ov>=0),avg=tested.length?Math.round(tested.reduce((a,s)=>a+s.ov,0)/tested.length):null,ac=L.length?Math.round(L.reduce((a,s)=>a+pcOf(s),0)/L.length):0;
+const dav=D.map((d,i)=>{const v=L.map(s=>s.sc[i]).filter(x=>x>=0);return v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length):null});
+return'<div class="card"><h2>Welcome, <span class="grad">'+esc(U.name)+'</span></h2><div class="stats"><div><b>'+L.length+'</b><span class="sm muted">students</span></div><div><b>'+(avg==null?'–':avg)+'</b><span class="sm muted">class average</span></div><div><b>'+ac+'%</b><span class="sm muted">plan completion</span></div><div><b>'+L.filter(attn).length+'</b><span class="sm muted">need attention</span></div></div>'+
+'<p class="sm muted">Students link to you by typing <b>'+esc(U.login)+'</b> as their teacher’s email when they sign up. Students on this device appear automatically. For students on other devices, paste the report code from their email below.</p></div>'+
+(L.length?'<div class="card"><h2>Class by department</h2><div class="crit">'+D.map((d,i)=>'<div class="r" style="'+hs(d)+'"><div><span>'+d.n+'</span><span>'+(dav[i]==null?'–':dav[i])+'</span></div><div class="bar"><i style="width:'+(dav[i]||0)+'%"></i></div></div>').join('')+'</div></div>':'')+
+'<div class="card"><div class="row" style="justify-content:space-between"><h2>Students</h2><div class="row"><button class="sbtn" data-a="csv">Download CSV</button><button class="sbtn" data-a="copyClass">Copy class report</button></div></div>'+
+(L.length?'<div class="tw"><table class="tbl"><thead><tr><th>Student</th><th>Group</th><th>Overall</th><th>Plan done</th><th>XP</th><th>Streak</th><th>Last active</th><th>Status</th><th></th></tr></thead><tbody>'+L.map(s=>'<tr><td><b>'+esc(s.n)+'</b>'+(s.src==='import'?' <span class="pill">imported</span>':'')+'</td><td>'+esc(s.g)+'</td><td>'+(s.ov<0?'–':s.ov+' ('+lvl(s.ov)+')')+'</td><td>'+pcOf(s)+'%</td><td>'+s.xp+'</td><td>'+s.st+'</td><td>'+esc(s.la||'–')+'</td><td>'+(attn(s)?'<span class="pill bad">attention</span>':'<span class="pill ok">on track</span>')+'</td><td><button class="sbtn" data-a="tdOpen" data-l="'+esc(s.l)+'">Open</button></td></tr>').join('')+'</tbody></table></div>':'<p class="muted">No students yet. Share your email with students or import a report code.</p>')+'</div>'+
+'<div class="card"><h2>Import a student report</h2><p class="sm muted">Students send a weekly report by email. It contains a line starting with APPLINGO-REPORT: followed by a code. Paste one or many here. Imported reports are self-reported by the student.</p><textarea class="ta" id="imp" style="min-height:110px" aria-label="Report codes" placeholder="APPLINGO-REPORT:..."></textarea><div class="row"><button class="pri" data-a="import">Import</button></div>'+(V.msg?'<p class="sm" role="status">'+esc(V.msg)+'</p>':'')+'</div>'}
+function tdV(){const L=classList(U),s=L.find(x=>x.l===V.l);if(!s)return'<div class="card"><p>Student not found.</p><button data-a="nav" data-v="home">Back</button></div>';
+const se=series(hh(s.h));
+return'<div class="card"><div class="row" style="justify-content:space-between"><h2>'+esc(s.n)+' <span class="muted sm">('+esc(s.g)+')</span></h2><button class="sbtn" data-a="nav" data-v="home">← Class</button></div><div class="top">'+(s.ov<0?'<p class="muted">No tests yet.</p>':ringV(s.ov,'overall'))+'<div>'+(s.ov<0?'':radarV(s.sc))+'</div></div>'+
+'<div class="row"><span class="pill">Level '+LV(s.xp)+'</span><span class="pill">'+s.xp+' XP</span><span class="pill">🔥 '+s.st+'</span><span class="pill">Plan '+pcOf(s)+'% done</span><span class="pill">Report date '+esc(s.d)+'</span></div></div>'+
+'<div class="card"><h2>Departments</h2><div class="crit">'+D.map((d,i)=>{const v=s.sc[i];return'<div class="r" style="'+hs(d)+'"><div><span>'+d.n+'</span><span>'+(v<0?'not tested':v+' · '+lvl(v))+' · plan '+s.bd[i][1]+'/'+s.bd[i][0]+' min</span></div><div class="bar"><i style="width:'+Math.max(0,v)+'%"></i></div></div>'}).join('')+'</div></div>'+
+'<div class="card"><h2>Progress over time</h2>'+chart(se.pts,se.labs)+'</div>'+
+'<div class="card"><h2>Weekly report</h2><pre style="white-space:pre-wrap;margin:0;font:inherit">'+esc(reportText(s))+'</pre><div class="row"><button class="pri sbtn" data-a="copyTd" data-l="'+esc(s.l)+'">Copy report</button>'+(s.src==='import'?'<button class="sbtn" data-a="tdRemove" data-l="'+esc(s.l)+'">Remove imported student</button>':'')+'</div></div>'}
+/* ===== about ===== */
+function aboutV(){return'<div class="card"><h1 style="font-size:2.2rem">About <span class="grad">Applingo</span></h1><h3>The problem</h3><p>Many learners do not know their level in each English skill, study without a plan, and their teachers cannot easily see their progress. Most placement tests give one number and no advice.</p>'+
+'<h3>What Applingo does</h3><ul class="l"><li><b>Test:</b> eight independent departments (grammar, vocabulary, reading, listening, writing, speaking, app English, everyday English). Each gives its own 0–100 score.</li><li><b>Results:</b> radar profile, history, mistakes, and criteria-based feedback for essays and speaking.</li><li><b>Plan:</b> a weekly schedule that uses real apps (Duolingo, Quizlet, Memrise, Cake, Busuu) and adapts to scores and completed tasks.</li><li><b>Motivation:</b> XP, levels, daily streaks and badges.</li><li><b>Teachers:</b> a class dashboard and weekly reports for each student.</li></ul>'+
+'<h3>How the AI works</h3><ul class="l"><li><b>Adaptive testing:</b> after each answer the difficulty goes up or down, so the final score reflects the hardest level the student can handle (like computerised adaptive tests).</li><li><b>Essay analysis (rule-based NLP):</b> five criteria are scored from the text itself: task coverage, organisation and linking words, vocabulary range, grammar patterns, and spelling and punctuation.</li><li><b>Speech analysis:</b> the browser’s speech recognition turns the voice into text. We score pace, vocabulary, grammar connectors, content, and recognition clarity.</li><li><b>Adaptive planner:</b> minutes are shared in proportion to weakness. Skipped tasks raise a department’s priority next week, strong and completed departments get less time. The plan explains its changes in plain words.</li></ul>'+
+'<h3>Ethics, privacy and limits</h3><ul class="l"><li>All data stays in the student’s browser. Nothing is uploaded unless the student sends a report to their teacher.</li><li>Scoring rules are shown to the student (criteria and tips), so results are transparent.</li><li>Scores are estimates, not certificates. The writing checker cannot judge ideas, and speech recognition can be less accurate for some accents, so we offer self-rating and recommend teacher review.</li><li>Accessibility: keyboard use, high contrast, reduced motion, and a text alternative for audio.</li></ul>'+
+'<h3>Next steps</h3><p>Cloud accounts (Firebase or Supabase) so teachers see students on any device, fully automatic weekly emails from a server, real recorded listening audio, an LLM-based writing coach behind a safe server, and more languages.</p></div>'}
+/* ===== demo data ===== */
+async function seedDemo(){const th='demo.teacher@applingo.app';if(DB.users[th])return;const h=await hashPw('demo123','demo'),pass=()=>({s:'demo',h});
+DB.users[th]={role:'teacher',name:'Ms. Demo',login:th,pass:pass(),imports:{}};const keep=U;
+const mk=(login,name,grade,base,gain,xp,st,pc)=>{const u=newStudent({name,login,grade,teacher:th,pass:pass()}),now=Date.now();
+[28,21,14,7].forEach((ago,j)=>{D.forEach((d,i)=>{if(j===0&&i%3===0)return;u.hist.push({t:now-ago*864e5+i*1000,k:d.k,s:cl(base[i]+gain*j+((i*7+j*3)%9)-4,5,98),c:5,n:8})})});
+u.xp=xp;u.streak=st;u.last=ymd();u.stats.tasks=12;u.prefs={mins:30,dpw:5};DB.users[login]=u;U=u;ensurePlan(u);let c=0;Object.values(u.plan.days).forEach(bl=>bl.forEach(b=>{if((c++*37)%100<pc){u.done[b.id]=now;u.paid[b.id]=1}}));checkBadges();U=keep};
+mk('demo','Aigerim Demo','High',[48,55,52,40,42,50,38,60],7,640,5,65);mk('demo2','Daniyar Demo','Middle',[35,40,38,30,28,35,25,45],6,310,2,30);mk('demo3','Amina Demo','Elementary',[22,30,28,20,18,25,15,35],4,120,0,10);save()}
+/* ===== actions ===== */
+const ACT={
+nav(b){const v=b.dataset.v;if(TS&&TS.mode!=='done'&&V.n==='test'&&!confirm('Leave the test? Your answers will be lost.'))return;if(TS&&V.n==='test'){stopTTS();stopRec(true);TS=null}go(v)},
+tab(b){V={n:'home',tab:b.dataset.v};render()},
+logout(){stopTTS();DB.session=null;U=null;TS=null;save();go('home')},
+theme(){const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('applingo_theme',r.dataset.theme)}catch(e){}},
+start(b){startTest(b.dataset.k)},retake(b){startTest(b.dataset.k)},
+full(){startTest(D[0].k,D.slice(1).map(x=>x.k))},
+nextDept(){const q=TS.queue.slice(),k=q.shift();startTest(k,q)},
+exit(){if(!confirm('Exit the test? Your answers will be lost.'))return;stopTTS();stopRec(true);TS=null;go('home')},
+qnext(){qnext()},
+essaySubmit(){const t=($('#essay').value||'').trim(),r=essayScore(t,TS.P);U.essays.push({t:Date.now(),q:TS.P.q,text:t.slice(0,2500)});U.essays=U.essays.slice(-3);complete('writing',r.total,{crit:r.crit,issues:r.issues,wc:r.wc})},
+ptab(b){V.k=b.dataset.k;render()},
+sendNow(){sendReport(snap(U),false)},copyRep(){copy(fullReport(snap(U)),'Report copied')},
+sendPending(){const e=U.weeks[U.weeks.length-1];if(!e)return;sendReport(snapWeek(U,e),false).then(ok=>{if(ok){U.pending=null;save();render()}})},
+dismissPending(){U.pending=null;save();render()},
+async demoS(){await seedDemo();enter(DB.users.demo)},async demoT(){await seedDemo();enter(DB.users['demo.teacher@applingo.app'])},
+tdOpen(b){go('td',{l:b.dataset.l})},
+tdRemove(b){delete U.imports[b.dataset.l];save();go('home')},
+copyTd(b){const s=classList(U).find(x=>x.l===b.dataset.l);if(s)copy(reportText(s),'Report copied')},
+copyClass(){copy(classList(U).map(reportText).join('\n\n---\n\n'),'Class report copied')},
+csv(){const L=classList(U),q=x=>'"'+String(x).replace(/"/g,'""')+'"';dl('applingo-class.csv',['Name,Group,Overall,PlanDone%,XP,Streak,LastActive,'+D.map(d=>d.n).join(',')].concat(L.map(s=>[q(s.n),q(s.g),s.ov<0?'':s.ov,pcOf(s),s.xp,s.st,s.la||''].concat(s.sc.map(v=>v<0?'':v)).join(','))).join('\n'))},
+import(){const v=$('#imp').value,re=/APPLINGO-REPORT:([A-Za-z0-9+\/=]+)/g;let m,ok=0,bad=0;U.imports=U.imports||{};
+while((m=re.exec(v))){try{const s=JSON.parse(dec(m[1]));if(s.t!==U.login||!s.l||!s.n){bad++;continue}U.imports[s.l]=s;ok++}catch(e){bad++}}
+save();go('home',{msg:ok+' report(s) imported'+(bad?', '+bad+' skipped (wrong teacher email or invalid code)':'')+'.'})}};
+const CHG={task(b){toggle(b.dataset.id,b.checked)},
+pf(){U.prefs={mins:+$('#mins').value,dpw:+$('#dpw').value};adaptPlan();save();render();toast('Plan updated')},
+essayLvl(b){TS.P=ESS[+b.value-1];render()}};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b||b.disabled)return;const f=ACT[b.dataset.a];if(f)f(b,e)});
+document.addEventListener('change',e=>{const b=e.target.closest('[data-c]');if(!b)return;const f=CHG[b.dataset.c];if(f)f(b,e)});
+document.addEventListener('submit',e=>{const f=e.target.closest('[data-f]');if(!f)return;e.preventDefault();const fn=FORM[f.dataset.f];if(fn)fn(new FormData(f)).catch(()=>setErr('Something went wrong. Please try again.'))});
+try{const th=localStorage.getItem('applingo_theme');if(th)document.documentElement.dataset.theme=th}catch(e){}
+function scriptPage(){const L=B.listening;$('#app').innerHTML='<div class="card"><h2>Listening recording script</h2><p class="muted">Record each text with a real voice (a teacher, a classmate or a native speaker). Save each recording as <b>ID.mp3</b> (m4a or wav also work), for example <b>L01.mp3</b>. Put the files in a folder named <b>audio</b> next to index.html and upload everything to Netlify. For dialogues (A and B) use two voices. If a file is missing, the site uses the best computer voice instead. Total: '+L.length+' recordings.</p>'+L.map(q=>'<div class="pass"><b>'+q.id+'</b> · '+esc(q.x)+'</div>').join('')+'<div class="row"><button onclick="location.hash=\'\';location.reload()">Back to the site</button></div></div>'}
+if(location.hash==='#script'){hdr();scriptPage()}else{if(U&&U.role==='student'){ensurePlan(U);autoReport()}render()}
+</script></body></html>
